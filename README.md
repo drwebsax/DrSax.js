@@ -43,21 +43,6 @@ React is available as the `react` package on [npm](https://www.npmjs.com/). It i
 
 React is flexible and can be used in a variety of projects. You can create new apps with it, but you can also gradually introduce it into an existing codebase without doing a rewrite.
 
-The recommended way to install React depends on your project. Here you can find short guides for the most common scenarios:
-
-* [Trying Out React](https://reactjs.org/docs/try-react.html)
-* [Creating a New Application](https://reactjs.org/docs/add-react-to-a-new-app.html)
-* [Adding React to an Existing Application](https://reactjs.org/docs/add-react-to-an-existing-app.html)
-
-## Contributing
-
-The main purpose of this repository is to continue to evolve React core, making it faster and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving React.
-
-### [Code of Conduct](https://code.facebook.com/codeofconduct)
-
-Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.facebook.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
-
-### [Contributing Guide](https://reactjs.org/contributing/how-to-contribute.html)
 
 ### License
 
