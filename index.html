@@ -2,7 +2,7 @@
 <html>
 <title>Web Audio library for Saxophone</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="new_w3.css">
+<link rel="stylesheet" href="./css/w3_v1.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
@@ -28,7 +28,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <li class="w3-hide-small"><a href="web_works.html"  target="_blank" class="w3-hover-white">Web-works</a></li>
 
   <li class="w3-hide-small"><a href="#contact" class="w3-hover-white">Contact</a></li>
- 
+
 </ul>
 
 <!-- Sidenav -->
@@ -58,7 +58,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <a href="#revstart" class="w3-hover-black">DrSaX.js Reverb</a>
 
  <h4 ><b> Audio File</b></h4>
- 
+
   <a href="#upstart" class="w3-hover-black">DrSaX.js Audio player</a>
   <a href="#filestart" class="w3-hover-black">DrSaX.js  Audio upload</a>
  <a href="#speedstart" class="w3-hover-black">DrSaX.js   Audio control </a>
@@ -88,7 +88,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <h4 ><b>Web application works</b></h4>
 
    <a href="web_works.html"  target="_blank" class="w3-hover-black">DrSaX.js works</a>
-   
+
 
 <br><br><br><br><br>
 </nav>
@@ -124,7 +124,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <p>  Simplification and getting fast  </p>
   <p> Easier to connect </p>
 
- 
+
   </div>
 </div>
 
@@ -164,7 +164,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <a name="w"><a>
   <div class="w3-twothird w3-container"><!-- text in -->
     <h1 class="w3-text">What is DrSax.js?</h1>
-      <p>DrSax.js is a modern Web Audio  framework with 
+      <p>DrSax.js is a modern Web Audio  framework with
 
 Smaller and faster than other Web Audio frameworks.
 Easier to learn, and easier to use than other Web Audio frameworks.
@@ -185,11 +185,11 @@ Provides equality for all devices. PC, laptop, tablet, and mobile:</p>
 
 
 
-  
+
     <div class="w3-twothird w3-container"><!-- text in -->
        <h1 class="w3-text">How To use</h1>
 
-      
+
        <p>To use DrSax.js in your web applications, download DrSax.js from downloads
        and just add a script to "DrSax.js" in script tag from your web pages   </p>
 
@@ -206,16 +206,16 @@ Provides equality for all devices. PC, laptop, tablet, and mobile:</p>
 
         <!-- code set -->
         <div class="w3-example">
-  
+
           <h3>DrSax.js setting</h3>
          <div class="w3-code jsHigh notranslate">
  <pre>  <!--x--><<!--x -->script<!--x--><!--x --> src="DrSAX.1.6.9.2.js" <!--x-->><!--x --> <!--x--><<!--x-->/script<!--x-->><!--x --> </pre>
-               
+
          </div>
          <p>Web Audio library for Saxophone in JavaScript.</p>
 
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -233,7 +233,7 @@ Provides equality for all devices. PC, laptop, tablet, and mobile:</p>
             <h3>Declare  "var DSX = new DSX" on the top </h3>
          <div class="w3-code jsHigh notranslate">
             <pre>
- <!--x--><<!--x -->script<!--x--><!--x --><!--x-->><!--x --> 
+ <!--x--><<!--x -->script<!--x--><!--x --><!--x-->><!--x -->
 
 var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
   var gain = new DSX.Amp({gain: 0.5});
@@ -257,19 +257,19 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Drsax.js vesion</th>
       <th> Specification</th>
-    
+
     </tr>
   </thead>
 
     <tr>
       <td>Drsax.1.6.1.0.js</td>
       <td>add delay property</td>
-    
+
     </tr>
     <tr>
 
@@ -284,7 +284,6 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
 
     </div><!----------------------------------- text out -->
-    
 
 
 
@@ -294,7 +293,8 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
 
 
-     
+
+
 
 
     <div class="w3-twothird w3-container"><!-- text in -->
@@ -322,7 +322,7 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -366,30 +366,30 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Osc example code</h3>
-          <div class="w3-code jsHigh notranslate">  
-<pre>  var osc = new DSX.Osc({type:"sawtooth",freq: 700}); 
+          <div class="w3-code jsHigh notranslate">
+<pre>  var osc = new DSX.Osc({type:"sawtooth",freq: 700});
   [oscillator type is "sawtooth" and frequency is 700Hz]
 
-  var gain = new DSX.Amp({ gain: 0.1}); 
-  [ampulitude gain is "0.1"] 
+  var gain = new DSX.Amp({ gain: 0.1});
+  [ampulitude gain is "0.1"]
 
-  osc.connect(gain);  [osc connect to gain]  
+  osc.connect(gain);  [osc connect to gain]
 
-  gain.connect(DAC);  [gain connect to main out]   
+  gain.connect(DAC);  [gain connect to main out]
 
-  osc.start();                         
+  osc.start();
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_osc.1.0.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
           <a href="#" onclick="window.open('https://webaudiojs.github.io/works/osc.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -418,11 +418,11 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -452,29 +452,29 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Amp example code</h3>
-          <div class="w3-code jsHigh notranslate">  
-<pre>  var osc = new DSX.Osc({type:"sawtooth",freq: 700}); 
+          <div class="w3-code jsHigh notranslate">
+<pre>  var osc = new DSX.Osc({type:"sawtooth",freq: 700});
   [oscillator type is "sawtooth" and frequency is 700Hz]
 
-  var gain = new DSX.Amp({ gain: 0.1}); 
-  [ampulitude gain is "0.1"] 
+  var gain = new DSX.Amp({ gain: 0.1});
+  [ampulitude gain is "0.1"]
 
-  osc.connect(gain);  [osc connect to gain]  
+  osc.connect(gain);  [osc connect to gain]
 
-  gain.connect(DAC);  [gain connect to main out]   
+  gain.connect(DAC);  [gain connect to main out]
 
-  osc.start();                         
+  osc.start();
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_osc.1.0.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -502,7 +502,7 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -516,7 +516,7 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
       <td>ATRS.attack.value</td>
       <td> ATRS.soundfrom("sound");</td>
     </tr>
- 
+
   <tr>
       <td></td>
       <td>ATRS.release.value</td>
@@ -540,25 +540,25 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.ATRS example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre> var adsr = new DSX.ATRS();
 
         osc.start();
         adsr.soundfrom(osc);
         adsr.connect(gain);
         gain.connect(DAC);
-     
-                       
+
+
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_attack.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -591,11 +591,11 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -625,28 +625,28 @@ var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.stereoPan example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>var gain = new DSX.Amp({gain: 0.5});
 var osc = new DSX.Osc({type:"sawtooth",freq: 500});
 var stereoPan = new DSX.stereoPan({ pan: -1,});
-var osc_pan =new DSX.valueChange("pan",stereoPan.pan); 
-  
+var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
+
         osc.connect(gain);
         gain.connect(stereoPan);
-        stereoPan.connect(DAC);                  
+        stereoPan.connect(DAC);
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
-             <a href="#" onclick="window.open('examples/demo_pan.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> 
+             <a href="#" onclick="window.open('examples/demo_pan.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
             <a href="#" onclick="window.open('https://drsax.github.io/DrSAX/examples/demo_pan.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -668,11 +668,11 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -702,7 +702,7 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Reverb example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>
 
    var DSX = new DSX;
@@ -711,20 +711,20 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
    var saxReverb =new DSX.Reverb({gain:0.6});
         osc.connect(gain);
         saxReverb.getfrom(gain);
-        saxReverb.connect(DAC);        
+        saxReverb.connect(DAC);
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
-             <a href="#" onclick="window.open('examples/demo_reverb.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> 
+             <a href="#" onclick="window.open('examples/demo_reverb.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
             <a href="#" onclick="window.open('https://webaudiojs.github.io/works/reverb.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -747,11 +747,11 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -779,7 +779,7 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b  style="font-size:18px">delayTime range</b> : 0 to 1.&nbsp;&nbsp; <b  style="font-size:18px">feedback range</b> : 0 to 1. absolutely!  </p>
-       
+
 
 </div>
   <!-- head code set -->
@@ -787,27 +787,27 @@ var osc_pan =new DSX.valueChange("pan",stereoPan.pan);
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Delay example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>var gain = new DSX.Amp({gain: 0.5});
 var osc = new DSX.Osc({type:"sawtooth",freq: 500});
 var Delay = new DSX.Delay({ delayTime : 200, feedback: 0.45, });
-  
+
         osc.connect(gain);
         gain.connect(Delay);
-        Delay.connect(DAC);                  
+        Delay.connect(DAC);
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_delay.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
             <a href="#" onclick="window.open('https://webaudiojs.github.io/works/delay.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -831,7 +831,7 @@ var Delay = new DSX.Delay({ delayTime : 200, feedback: 0.45, });
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -880,7 +880,7 @@ var Delay = new DSX.Delay({ delayTime : 200, feedback: 0.45, });
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b style="font-size:18px">FM synthesizer </b></p>
-   
+
 </div>
   <!-- head code set -->
 
@@ -889,14 +889,14 @@ var Delay = new DSX.Delay({ delayTime : 200, feedback: 0.45, });
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.FM example code</h3>
-          <div class="w3-code jsHigh notranslate">  
-<pre> 
+          <div class="w3-code jsHigh notranslate">
+<pre>
 
 var fm = new  DSX.FM({carrier_type:"sine",carrier:500,mod_type :"sine",modfreq:700,depth:1800,gain:0.5});
 var sax_fm1 =new DSX.valueChange("fm1",fm.carrier);
-var sax_fm2 =new DSX.valueChange("fm2",fm.modfreq); 
-var sax_fm3 =new DSX.valueChange("fm3",fm.depth); 
-var sax_fm4 =new DSX.valueChange("fm4",fm.gain); 
+var sax_fm2 =new DSX.valueChange("fm2",fm.modfreq);
+var sax_fm3 =new DSX.valueChange("fm3",fm.depth);
+var sax_fm4 =new DSX.valueChange("fm4",fm.gain);
 
 fm.connect(gain)
 gain.connect(DAC)
@@ -904,19 +904,19 @@ gain.connect(DAC)
 fm.stop();
 
 
-                       
+
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
-             <a href="#" onclick="window.open('examples/demo_fm.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a> 
+             <a href="#" onclick="window.open('examples/demo_fm.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
              <a href="#" onclick="window.open('https://webaudiojs.github.io/works/fm.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -941,7 +941,7 @@ fm.stop();
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -981,7 +981,7 @@ fm.stop();
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b style="font-size:18px">AM synthesizer </b></p>
-   
+
 </div>
   <!-- head code set -->
 
@@ -990,14 +990,14 @@ fm.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.AM example code</h3>
-          <div class="w3-code jsHigh notranslate">  
-<pre> 
+          <div class="w3-code jsHigh notranslate">
+<pre>
 var osc = new DSX.Osc({type:"sine",freq:700});
 var am = new  DSX.AM({mod_type :"sine",modfreq:200,depth:0.5,gain:0.5});
 var sax_am1 =new DSX.valueChange("am1",osc.freq);
-var sax_am2 =new DSX.valueChange("am2",am.modfreq); 
-var sax_am3 =new DSX.valueChange("am3",am.depth); 
-var sax_am4 =new DSX.valueChange("am4",am.gain); 
+var sax_am2 =new DSX.valueChange("am2",am.modfreq);
+var sax_am3 =new DSX.valueChange("am3",am.depth);
+var sax_am4 =new DSX.valueChange("am4",am.gain);
 
 am.get(osc)
 am.connect(gain)
@@ -1008,19 +1008,19 @@ osc.start();
 am.stop();
 
 
-                       
+
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
-             <a href="#" onclick="window.open('examples/demo_am.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a> 
+             <a href="#" onclick="window.open('examples/demo_am.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
             <a href="#" onclick="window.open('https://webaudiojs.github.io/works/am.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1047,7 +1047,7 @@ am.stop();
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -1071,7 +1071,7 @@ am.stop();
       <td> Subtract.gain.vlaue</td>
       <td></td>
     </tr>
- 
+
 
 
   </table>
@@ -1082,7 +1082,7 @@ am.stop();
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b style="font-size:18px">Subtract </b></p>
-   
+
 </div>
   <!-- head code set -->
 
@@ -1091,31 +1091,31 @@ am.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Osc example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre> var sub = new DSX.Subtract({cutoff:1230, resonance:0, gain:0.8});
 var sax_EQ1 =new DSX.valueChange("EQ1",osc.freq);
-var sax_EQ2 =new DSX.valueChange("EQ2",sub.cutoff); 
-var sax_EQ3 =new DSX.valueChange("EQ3",sub.resonance); 
-var sax_EQ4 =new DSX.valueChange("EQ4",sub.gain); 
+var sax_EQ2 =new DSX.valueChange("EQ2",sub.cutoff);
+var sax_EQ3 =new DSX.valueChange("EQ3",sub.resonance);
+var sax_EQ4 =new DSX.valueChange("EQ4",sub.gain);
 
 osc.connect(sub)
 sub.connect(gain)
 gain.connect(DAC)
 osc.start();
 
-                       
+
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_sub.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
              <a href="#" onclick="window.open('https://webaudiojs.github.io/works/sub.html','popup','width=750,height=550,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1153,7 +1153,7 @@ osc.start();
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -1198,7 +1198,7 @@ osc.start();
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b style="font-size:18px">EQ gain range</b> : -20 to  20 </p>
-   
+
 </div>
   <!-- head code set -->
 
@@ -1207,18 +1207,18 @@ osc.start();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Osc example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre> var DSX = new DSX;
 var gain = new DSX.Amp({gain: 0.5});
 var file =new DSX.BGdata("https://drsax.github.io/DrSAX/examples/life.mp3");
 
-var newEQ = new  DSX.EQ({hiGain:-10, mhiGain:-10, miGain:-10, 
+var newEQ = new  DSX.EQ({hiGain:-10, mhiGain:-10, miGain:-10,
                              milowGain:-10, lowGain:-10});
 
-var sax_EQ1 =new DSX.valueChange("EQ5",newEQ.hiGain); 
-var sax_EQ2 =new DSX.valueChange("EQ4",newEQ.mhiGain); 
-var sax_EQ3 =new DSX.valueChange("EQ3",newEQ.miGain); 
-var sax_EQ4 =new DSX.valueChange("EQ2",newEQ.milowGain); 
+var sax_EQ1 =new DSX.valueChange("EQ5",newEQ.hiGain);
+var sax_EQ2 =new DSX.valueChange("EQ4",newEQ.mhiGain);
+var sax_EQ3 =new DSX.valueChange("EQ3",newEQ.miGain);
+var sax_EQ4 =new DSX.valueChange("EQ2",newEQ.milowGain);
 var sax_EQ5 =new DSX.valueChange("EQ1",newEQ.lowGain);
 
 var play = document.querySelector('.play');
@@ -1232,22 +1232,22 @@ gain.connect(DAC)
 file.start();
 }
 stop.onclick = function() {
- 
+
 file.stop();
 }
-                       
+
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
-             <a href="#" onclick="window.open('examples/demo_eq.html','popup','width=850,height=450,left=0,top=0,scrollbars=no'); return false;">demo</a> 
+             <a href="#" onclick="window.open('examples/demo_eq.html','popup','width=850,height=450,left=0,top=0,scrollbars=no'); return false;">demo</a>
             <a href="#" onclick="window.open('https://webaudiojs.github.io/works/eq.html','popup','width=850,height=450,left=0,top=0,scrollbars=no'); return false;">demo</a>
           </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1268,11 +1268,11 @@ file.stop();
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1303,14 +1303,14 @@ file.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.BGdata example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>
 
 <<!---->input type="file" id="upload">
 <<!---->audio id="sound" controls ><<!---->/audio>
 
 var playing =new DSX.musicPlayer();
-playing.load("upload","sound");        
+playing.load("upload","sound");
       </pre>
 
           </div>
@@ -1318,10 +1318,10 @@ playing.load("upload","sound");
 
 
              <a href="#" onclick="window.open('examples/demo_play.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1343,11 +1343,11 @@ playing.load("upload","sound");
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1365,7 +1365,7 @@ playing.load("upload","sound");
       <td></td>
       <td></td>
       <td>BGsound.stop()</td>
-  
+
   </table>
   <!-- table code set -->
 
@@ -1381,7 +1381,7 @@ playing.load("upload","sound");
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.BGdata example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>
 <<!---->input id="inputS" type="file" accept="audio/*">
 
@@ -1400,18 +1400,18 @@ gain.connect(DAC)
 
 stop.onclick = function(){
 file_upload.stop();
-                         }         
+                         }
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_play2.html','popup','width=450,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1432,11 +1432,11 @@ file_upload.stop();
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1477,7 +1477,7 @@ file_upload.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.BGdata example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>var DSX = new DSX;
 var gain = new DSX.Amp({gain: 0.5});
 var file =new DSX.BGdata("https://drsax.github.io/DrSAX/examples/life.mp3");
@@ -1489,22 +1489,22 @@ file.connect(DAC)
 file.start();
 }
 stop.onclick = function() {
- 
+
 file.stop();
 }
 
-                
+
       </pre>
 
           </div>
-             <h5 style="color:blue">Feel free to Try  
+             <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_playspeed.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1524,11 +1524,11 @@ file.stop();
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1558,7 +1558,7 @@ file.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Mic example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
     var DSX = new DSX;
     var gain = new DSX.Amp({gain: 0.5});
@@ -1566,17 +1566,17 @@ file.stop();
 
       saxInput.connect(gain);
       gain.connect(DAC);
-                
+
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_mic.html','popup','width=385,height=500,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1599,11 +1599,11 @@ file.stop();
 
 
 
-   
+
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1633,7 +1633,7 @@ file.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.Tunner example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
     var DSX = new DSX;
     var gain = new DSX.Amp({gain: 0.5});
@@ -1643,17 +1643,17 @@ file.stop();
       saxInput.connect(gain);
       tune.getAnalyser(saxInput);
       gain.connect(DAC);
-                
+
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_tune.html','popup','width=385,height=500,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1676,7 +1676,7 @@ file.stop();
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -1737,35 +1737,35 @@ file.stop();
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.saxComp example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
 var DSX = new DSX;
 
 var saxComp = new DSX.saxComp({ threshold: -70,  ratio: 12, });
-var sax_Comp1 =new DSX.valueChange("Comp1",saxComp.threshold); 
-var sax_Comp2 =new DSX.valueChange("Comp2",saxComp.reduction); 
-var sax_Comp3 =new DSX.valueChange("Comp3",saxComp.knee); 
-var sax_Comp4 =new DSX.valueChange("Comp4",saxComp.ratio); 
-var sax_Comp5 =new DSX.valueChange("Comp5",saxComp.attack); 
-var sax_Comp6 =new DSX.valueChange("Comp6",saxComp.release); 
+var sax_Comp1 =new DSX.valueChange("Comp1",saxComp.threshold);
+var sax_Comp2 =new DSX.valueChange("Comp2",saxComp.reduction);
+var sax_Comp3 =new DSX.valueChange("Comp3",saxComp.knee);
+var sax_Comp4 =new DSX.valueChange("Comp4",saxComp.ratio);
+var sax_Comp5 =new DSX.valueChange("Comp5",saxComp.attack);
+var sax_Comp6 =new DSX.valueChange("Comp6",saxComp.release);
 
 file.connect(saxComp)
 saxComp.connect(gain)
-gain.connect(DAC)            
+gain.connect(DAC)
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_comp.html','popup','width=750,height=400,left=0,top=0,scrollbars=no');
  return false;">demo</a>
 <a href="#" onclick="window.open('https://webaudiojs.github.io/works/comp.html','popup','width=750,height=400,left=0,top=0,scrollbars=no');
- return false;">demo</a> 
-          
+ return false;">demo</a>
+
           </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1785,10 +1785,10 @@ gain.connect(DAC)
 
 
 
-   
+
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1818,7 +1818,7 @@ gain.connect(DAC)
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.freqDomain example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
     var DSX = new DSX;
     var gain = new DSX.Amp({gain: 0.5});
@@ -1828,17 +1828,17 @@ gain.connect(DAC)
 
         saxInput.connect(gain);
         gain.connect(DAC);
-                
+
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_mic.html','popup','width=385,height=500,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1860,10 +1860,10 @@ gain.connect(DAC)
 
 
 
-   
+
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -1899,7 +1899,7 @@ gain.connect(DAC)
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.ampDomain example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
 
 <<!---->canvas id="canv" ><<!---->/<!---->canvas>
@@ -1907,24 +1907,24 @@ gain.connect(DAC)
     var gain = new DSX.Amp({gain: 0.5});
     var saxInput = new DSX.Mic();
     var amp_gain = new DSX.valueChange("knob2", gain.gain);
-  
-    var amp_canvas = new DSX.ampDomain('canv', "red",200,100); 
+
+    var amp_canvas = new DSX.ampDomain('canv', "red",200,100);
     amp_canvas.getAnalyser(gain);
 
       saxInput.connect(gain);
       gain.connect(DAC);
 
-     amp_canvas.cutAnalyser(gain)       
+     amp_canvas.cutAnalyser(gain)
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_ampdomain.html','popup','width=385,height=500,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -1947,7 +1947,7 @@ gain.connect(DAC)
 
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th> Object</th>
@@ -1973,7 +1973,7 @@ gain.connect(DAC)
   <!-- head code set -->
   <div class="w3-container w3-section w3-border w3-round-xlarge">
         <p><b style="font-size:18px">"changing properties" is </b> like 'osc.frequency' except 'value'  </p>
- 
+
 </div>
   <!-- head code set -->
 
@@ -1982,7 +1982,7 @@ gain.connect(DAC)
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.valueChange example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
 <pre>
 
 <<!---->webaudio-knob id="knob1" value="0" max="2000" step="1"><<!---->/<!---->webaudio-knob>
@@ -1990,17 +1990,17 @@ gain.connect(DAC)
 <<!---->webaudio-knob id="knob2" value="0" max="1" step="0.001"><<!---->/<!---->webaudio-knob>
 
       var oscfrequency = new DSX.valueChange("knob1", osc.frequency);
-      var ampgain = new DSX.valueChange("knob2", gain.gain);                        
+      var ampgain = new DSX.valueChange("knob2", gain.gain);
       </pre>
 
           </div>
-            <h5 style="color:blue">Feel free to Try  
+            <h5 style="color:blue">Feel free to Try
 
 
              <a href="#" onclick="window.open('examples/demo_osc.1.0.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a> </h5>
-            
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -2023,10 +2023,10 @@ gain.connect(DAC)
 
 
 
-   
+
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -2057,7 +2057,7 @@ gain.connect(DAC)
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.functionChange example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
 
 
@@ -2079,17 +2079,17 @@ gain.connect(DAC)
 
         }
     }
-   
+
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_ampdomain.html','popup','width=385,height=500,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -2109,10 +2109,10 @@ gain.connect(DAC)
 <!-- head code set -->
 
 
-   
+
   <!-- table code set -->
   <table class="w3-table w3-striped w3-bordered w3-border">
-    
+
     <thead>
 <tr class="w3-light-grey"  style="font-size:18px">
       <th>Object</th>
@@ -2143,7 +2143,7 @@ gain.connect(DAC)
         <!-- code set -->
         <div class="w3-example">
            <h3>DSX.valueToggle example code</h3>
-          <div class="w3-code jsHigh notranslate">  
+          <div class="w3-code jsHigh notranslate">
        <pre>
 
 
@@ -2166,17 +2166,17 @@ function stop(){
 file_upload.stop();
 
                 }
-   
+
       </pre>
 
   </div>
-    <h5 style="color:blue">Feel free to Try 
+    <h5 style="color:blue">Feel free to Try
 <a href="#" onclick="window.open('examples/demo_toggle.html','popup','width=480,height=450,left=0,top=0,scrollbars=no');
  return false;">demo</a> </h5>
-            
-            
+
+
         </div>
-        <!--code set -->  
+        <!--code set -->
 
 
 
@@ -2198,7 +2198,7 @@ file_upload.stop();
       <h3>Euyshick Hong</h3>
     </header>
     <div class="w3-container">
-   
+
       <hr>
       <img src="drhong.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
       <h3>Euy Shick Hong</h3>
@@ -2209,7 +2209,7 @@ antaresax@gmail.com</h3>
     <button class="w3-btn-block w3-dark-grey">+ Connect</button>
   </div>
 </div>
-   
+
 
 
 
@@ -2222,13 +2222,13 @@ antaresax@gmail.com</h3>
 
 
 
- 
 
 
 
- 
 
- 
+
+
+
 
 
 
@@ -2296,7 +2296,6 @@ antaresax@gmail.com</h3>
     </div>
 
     <!--last line --------------------------------- text out -->
-    
 
 
 
@@ -2331,10 +2330,11 @@ antaresax@gmail.com</h3>
 
 
 
- 
+
+
 
 <!-- main out -->
-</div> 
+</div>
 <!-- main out -->
 
 
@@ -2366,9 +2366,9 @@ function w3_close() {
     overlayBg.style.display = "none";
 }
  function get_drsax(){
-  
+
  alert();
-  
+
 }
 </script>
 
