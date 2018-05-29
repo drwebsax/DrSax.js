@@ -1209,10 +1209,10 @@
             b.value = e.target.value;
         }
 
-        // this.setRange = function(out) {
-        //     this.out = out;
-        //     this.dial_10.addEventListener("change", out, false);
-        // };
+        this.setRange = function(out) {
+            this.out = out;
+            this.dataContToggle.addEventListener("change", out, false);
+        };
     };
 
     // functionChange
