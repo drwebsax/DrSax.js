@@ -1211,7 +1211,7 @@
 
         this.setRange = function(out) {
             this.out = out;
-            this.dataContToggle.addEventListener("change", out, false);
+            this.dataCont.addEventListener("change", out, false);
         };
     };
 
