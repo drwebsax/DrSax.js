@@ -195,9 +195,8 @@
 
         var oscfrequency = new DSX.valueChange("knob1", osc.frequency);
         var ampgain = new DSX.valueChange("knob2", gain.gain);
-        var sound_on_off = new DSX.valueChange("switch1");
-        sound_on_off.setRange(switch1);
-        function switch1(e) {
+        var sound_on_off = new DSX.valueToggle("switch1",switchFun);
+        function switchFun(e) {
             if (e.target.value == "1") {
                 osc.start();
             }
