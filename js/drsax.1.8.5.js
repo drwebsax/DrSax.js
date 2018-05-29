@@ -912,7 +912,8 @@
 
         var reverbfile;
         var revebRequest = new XMLHttpRequest();
-        revebRequest.open('GET', 'https://drsax.github.io/DrSAX/DrSAX/reverbbg.wav', true);
+        //revebRequest.open('GET', 'https://drsax.github.io/DrSAX/DrSAX/reverbbg.wav', true);
+        revebRequest.open('GET', 'https://drwebsax.github.io/DrSax.js/import/rvb.wav', true);
         revebRequest.responseType = 'arraybuffer';
         revebRequest.send();
 
