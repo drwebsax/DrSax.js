@@ -37,8 +37,7 @@ You'll find mic demo application [mic and tunning](https://reactjs.org/docs/intr
 
 ## Download & Installation
 
-DrSax is available as the `react` package on [npm](https://www.npmjs.com/).
-It is also available on a [CDN](https://).
+It is also available on a [CDN](https://drwebsax.github.io/DrSax.js/js/drsax.1.8.5.js).
 
 ### License
 
