@@ -1205,7 +1205,9 @@
         this.dataCont = document.getElementById(c);
         this.dataCont.addEventListener("change", dialFunc, false);
 
+    
         function dialFunc(e) {
+            console.log(b);
             b.value = e.target.value;
         }
 
