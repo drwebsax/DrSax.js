@@ -21,16 +21,16 @@ It is divided into several sections:
 We have several examples [on the website](https://reactjs.org/). Here is the first one to get you started:
 
 ```jsx
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+var DSX = new DSX;
+var gain = new DSX.Amp({gain: 0.5});
+var osc = new DSX.Osc({type:"sawtooth",freq: 500});
+var stereoPan = new DSX.stereoPan({ pan: -1,});
+var osc_pan =new DSX.valueChange("pan",stereoPan.pan); 
 
-ReactDOM.render(
-  <HelloMessage name="John" />,
-  document.getElementById('container')
-);
+osc.connect(gain);
+gain.connect(stereoPan);
+stereoPan.connect(DAC);                  
+      
 ```
 
 This example will render "Hello John" into a container on the page.
