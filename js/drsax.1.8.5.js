@@ -117,7 +117,7 @@
 
         function shimConnect() {
             var node = arguments[0];
-            arguments[0] = Super.isPrototypeOf ? (Super.isPrototypeOf(node) ? node.input : node) : (node.input || node);
+            arguments[0] = Super.isPrototypeOf? (Super.isPrototypeOf(node)? node.input : node) : (node.input || node);
             oconnect.apply(this, arguments);
             return node;
         }
