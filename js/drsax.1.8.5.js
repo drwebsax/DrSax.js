@@ -1205,9 +1205,10 @@
         this.dataCont = document.getElementById(c);
         this.dataCont.addEventListener("change", dialFunc, false);
 
-    
+
         function dialFunc(e) {
             console.log(b);
+            (typeof b ==="undefined")?return;
             b.value = e.target.value;
         }
 
