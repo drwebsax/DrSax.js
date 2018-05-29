@@ -139,13 +139,10 @@
         <p>To use DrSax.js in your web applications, download DrSax.js from downloads
         and just add a script to "DrSax.js" in script tag from your web pages   </p>
 
-        <!-- download code set -->
+
         <h1 class="w3-text">Download DrSax.JS</h1>
         <a href="https://drsax.github.io/DrSAX/DrSax.1.7.0.1.2.js"  download>Download the latest version </a>
 
-        <!-- download code set -->
-
-        <!-- code set -->
         <div class="w3-example">
             <h3>DrSax.js setting</h3>
             <div class="w3-code jsHigh notranslate">
@@ -154,191 +151,100 @@
             </div>
             <p>Web Audio library for Saxophone in JavaScript.</p>
         </div>
-        <!--code set -->
-        <!-- download code set -->
+
         <h1 class="w3-text">"DSX" Setting </h1>
-        <!-- download code set -->
-
-
-      <!-- code set -->
-      <div class="w3-example">
-
+        <div class="w3-example">
             <h3>Declare  "var DSX = new DSX" on the top </h3>
-         <div class="w3-code jsHigh notranslate">
-            <pre>
- <!--x--><<!--x -->script<!--x--><!--x --><!--x-->><!--x -->
+            <div class="w3-code jsHigh notranslate">
+                <pre>
+                     <!--x--><<!--x -->script<!--x--><!--x --><!--x-->><!--x -->
 
-var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
-  var gain = new DSX.Amp({gain: 0.5});
-  var adsr = new DSX.ATRS();
-  var ampgain = new DSX.valueChange("knob2", gain.gain);
-.
-.
- <!--x--><<!--x-->/script<!--x-->><!--x -->
-</pre>
-         </div>
+                    var DSX = new DSX; /<!--x-->/  declare on the top, ablove all "DSX"
+                      var gain = new DSX.Amp({gain: 0.5});
+                      var adsr = new DSX.ATRS();
+                      var ampgain = new DSX.valueChange("knob2", gain.gain);
+                    .
+                    .
+                     <!--x--><<!--x-->/script<!--x-->><!--x -->
+                </pre>
+             </div>
             <h4> * AudioContext is set "drsax". ex( osc = drsax.createOscillator();)</h4>
-      </div>
-      <!--code set -->
+        </div>
+        <h1 class="w3-text"> DrSax.JS version history</h1>
 
-
-
-
-
-
- <h1 class="w3-text"> DrSax.JS version history</h1>
-
-  <!-- table code set -->
-  <table class="w3-table w3-striped w3-bordered w3-border">
-
-    <thead>
-<tr class="w3-light-grey"  style="font-size:18px">
-      <th> Drsax.js vesion</th>
-      <th> Specification</th>
-
-    </tr>
-  </thead>
-
-    <tr>
-      <td>Drsax.1.6.1.0.js</td>
-      <td>add delay property</td>
-
-    </tr>
-    <tr>
-
-        <td>Drsax.1.6.1.1.js</td>
-      <td>add reverb property</td>
-    </tr>
-
-
-
-  </table>
-  <!-- table code set -->
-
-
-    </div><!----------------------------------- text out -->
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- table code set -->
+        <table class="w3-table w3-striped w3-bordered w3-border">
+            <thead>
+                <tr class="w3-light-grey"  style="font-size:18px">
+                    <th> Drsax.js vesion</th>
+                    <th> Specification</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Drsax.1.6.1.0.js</td>
+                <td>add delay property</td>
+            </tr>
+            <tr>
+                <td>Drsax.1.6.1.1.js</td>
+                <td>add reverb property</td>
+            </tr>
+        </table>
+    </div>
 
     <div class="w3-twothird w3-container"><!-- text in -->
+        <a name="oscstart"><h4 style="color:#f2f2f2"> Oscillator </h4></a>
+            <br>
+            <div class="w3-container w3-blue">
+                <h4 class="w3-text">DrSaX.js Oscillator </h4>
+            </div>
+            <h1 class="w3-text">DSX.Osc : Make a sound oscillator</h1>
 
+            <!-- table code set -->
+            <table class="w3-table w3-striped w3-bordered w3-border">
+                <thead>
+                <tr class="w3-light-grey"  style="font-size:18px">
+                    <th> Object</th>
+                    <th>Property</th>
+                    <th>Method()</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>DSX.Osc("Oscillator","frequency")</td>
+                    <td>Osc.frequency.vlaue</td>
+                    <td>Osc.connect()</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> Osc.wave.type</td>
+                    <td>Osc.start();</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Osc.detune.vlaue</td>
+                    <td>Osc.stop();</td>
+                </tr>
+            </table>
+            <div class="w3-container w3-section w3-border w3-round-xlarge">
+                <p><b style="font-size:18px">frequency range</b> : 0 to  20000Hz( you can not hear over 20000Hz commonly.)</p>
+                <p><b style="font-size:18px">wave(Oscillator)type</b> :"sine","sawtooth", "square","triangle"</p>
+            </div>
 
-
-
-
-
-
-
-  <!-- section start ------------------------------------------------------------------>
-
-      <!-- head code set -->
-  <a name="oscstart"><h4 style="color:#f2f2f2"> Oscillator </h4></a>
-<br>
-   <div class="w3-container w3-blue">
-        <h4 class="w3-text">DrSaX.js Oscillator </h4>
-        </div>
-          <h1 class="w3-text">DSX.Osc : Make a sound oscillator</h1>
-      <!-- head code set -->
-
-
-
-
-  <!-- table code set -->
-  <table class="w3-table w3-striped w3-bordered w3-border">
-
-    <thead>
-<tr class="w3-light-grey"  style="font-size:18px">
-      <th> Object</th>
-      <th>Property</th>
-      <th>Method()</th>
-    </tr>
-  </thead>
-
-    <tr>
-      <td>DSX.Osc("Oscillator","frequency")</td>
-      <td>Osc.frequency.vlaue</td>
-      <td>Osc.connect()</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td> Osc.wave.type</td>
-      <td>Osc.start();</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Osc.detune.vlaue</td>
-      <td>Osc.stop();</td>
-    </tr>
-
-
-
-  </table>
-  <!-- table code set -->
-
-
-
-  <!-- head code set -->
-  <div class="w3-container w3-section w3-border w3-round-xlarge">
-        <p><b style="font-size:18px">frequency range</b> : 0 to  20000Hz( you can not hear over 20000Hz commonly.)  </p>
-        <p> <b style="font-size:18px">wave(Oscillator)type</b> :"sine","sawtooth", "square","triangle" </p>
-</div>
-  <!-- head code set -->
-
-
-
-        <!-- code set -->
-        <div class="w3-example">
-           <h3>DSX.Osc example code</h3>
-          <div class="w3-code jsHigh notranslate">
-<pre>  var osc = new DSX.Osc({type:"sawtooth",freq: 700});
-  [oscillator type is "sawtooth" and frequency is 700Hz]
-
-  var gain = new DSX.Amp({ gain: 0.1});
-  [ampulitude gain is "0.1"]
-
-  osc.connect(gain);  [osc connect to gain]
-
-  gain.connect(DAC);  [gain connect to main out]
-
-  osc.start();
-      </pre>
-
-          </div>
-            <h5 style="color:blue">Feel free to Try
-
-
-             <a href="#" onclick="window.open('examples/demo_osc.1.0.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
-          <a href="#" onclick="window.open('https://webaudiojs.github.io/works/osc.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
-          </h5>
-
-        </div>
-        <!--code set -->
-
-
-
-<!-- section end ------------------------------------------------------------------>
-
-
-
-
-
-
-
-
-
-
-<!-- section start ------------------------------------------------------------------>
-
+            <div class="w3-example">
+                <h3>DSX.Osc example code</h3>
+                <div class="w3-code jsHigh notranslate">
+                <pre>
+                    var osc = new DSX.Osc({type:"sawtooth",freq: 700});
+                    var gain = new DSX.Amp({ gain: 0.1});
+                    osc.connect(gain);
+                    gain.connect(DAC);
+                    osc.start();
+                </pre>
+                </div>
+                <h5 style="color:blue">Feel free to Try
+                    <a href="#" onclick="window.open('examples/demo_osc.1.0.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
+                    <a href="#" onclick="window.open('https://webaudiojs.github.io/works/osc.html','popup','width=385,height=500,left=0,top=0,scrollbars=no'); return false;">demo</a>
+               </h5>
+            </div>
 
 <!-- head code set -->
   <a name="ampstart"><h4 style="color:#f2f2f2"> DrSaX.js Amplitude </h4></a>
