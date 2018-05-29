@@ -1,4 +1,4 @@
-# [DrSax.js](https://reactjs.org/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]
+# [DrSax.js](https://reactjs.org/) &middot; [GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio API.
 
