@@ -7,7 +7,7 @@ DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio 
 
 [Learn how to use DrSax.js in your own project](https://).
 
-## Documentation
+## Tutorial site
 
 You can find the React documentation [on the website](https://reactjs.org/docs).  
 It is divided into several sections:
@@ -37,7 +37,7 @@ This example will render "Hello John" into a container on the page.
 
 You'll notice that we used an HTML-like syntax; [we call it JSX](https://reactjs.org/docs/introducing-jsx.html). JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML. We recommend using [Babel](https://babeljs.io/) with a [React preset](https://babeljs.io/docs/plugins/preset-react/) to convert JSX into native JavaScript for browsers to digest.
 
-## Installation
+## Download & Installation
 
 React is available as the `react` package on [npm](https://www.npmjs.com/). It is also available on a [CDN](https://reactjs.org/docs/cdn-links.html).
 
