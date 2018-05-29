@@ -1,12 +1,11 @@
-# [React](https://reactjs.org/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) ![npm version](https://img.shields.io/npm/v/react.svg?style=flat)
+# [DrSax.js](https://reactjs.org/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) ![npm version](https://img.shields.io/npm/v/react.svg?style=flat)
 
-React is a JavaScript library for building user interfaces.
+DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio API.
 
 * **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.
-* **Component-Based:** Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
-* **Learn Once, Write Anywhere:** We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).
 
-[Learn how to use React in your own project](https://reactjs.org/docs/getting-started.html).
+
+[Learn how to use DrSax.js in your own project](https://).
 
 ## Documentation
 
@@ -16,11 +15,6 @@ It is divided into several sections:
 * [Quick Start](https://reactjs.org/docs/hello-world.html)
 * [Advanced Guides](https://reactjs.org/docs/jsx-in-depth.html)
 * [API Reference](https://reactjs.org/docs/react-api.html)
-* [Tutorial](https://reactjs.org/tutorial/tutorial.html)
-* [Where to Get Support](https://reactjs.org/community/support.html)
-* [Contributing Guide](https://reactjs.org/docs/how-to-contribute.html)
-
-You can improve it by sending pull requests to [this repository](https://github.com/reactjs/reactjs.org).
 
 ## Examples
 
@@ -64,12 +58,6 @@ The main purpose of this repository is to continue to evolve React core, making 
 Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.facebook.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
 
 ### [Contributing Guide](https://reactjs.org/contributing/how-to-contribute.html)
-
-Read our [contributing guide](https://reactjs.org/contributing/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React.
-
-### Good First Issues
-
-To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/facebook/react/labels/good%20first%20issue) that contain bugs which have a relatively limited scope. This is a great place to get started.
 
 ### License
 
