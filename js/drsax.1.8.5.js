@@ -1095,24 +1095,56 @@
     });
 
     // Mic
+    // DSX.prototype.Mic = function() {
+    //
+    //     navigator.webkitGetUserMedia({
+    //         audio: true
+    //     }, mic_stream, mic_null);
+    //
+    //     function mic_stream(stream) {
+    //         this.stream = stream;
+    //         this.saxInput = drsax.createMediaStreamSource(stream);
+    //     }
+    //
+    //     function mic_null() {
+    //     }
+    //     this.connect = function(out) {
+    //         this.out = out;
+    //         this.saxInput.connect(out);
+    //     };
+    //
+    // };
     DSX.prototype.Mic = function() {
 
-        navigator.webkitGetUserMedia({
-            audio: true
-        }, mic_stream, mic_null);
+        navigator.getUserMedia = (navigator.getUserMedia ||
+                            navigator.webkitGetUserMedia ||
+                            navigator.mozGetUserMedia ||
+                            navigator.msGetUserMedia);
+       if (navigator.mediaDevices.getUserMedia) {
+
+          var p = navigator.mediaDevices.getUserMedia({ audio: { latency: 0.05, echoCancellation: false, noiseSuppression: true, autoGainControl: true} });
+          p.then(function(stream) {
+              mic_stream(stream);
+          });
+
+       }else {
+
+            navigator.getUserMedia({
+                audio:true
+            }, mic_stream, mic_null);
+       }
 
         function mic_stream(stream) {
             this.stream = stream;
             this.saxInput = drsax.createMediaStreamSource(stream);
         }
-
         function mic_null() {
         }
+
         this.connect = function(out) {
             this.out = out;
             this.saxInput.connect(out);
         };
-
     };
 
     // valueChange
