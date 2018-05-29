@@ -1131,7 +1131,9 @@
         this.node = (this.context.createScriptProcessor ||
             this.context.createJavaScriptNode).call(this.context,
             bufferLen, 2, 2);
-        var worker = new Worker('record.js');
+        //var worker = new Worker('record.js');
+        var worker = new Worker('https://drwebsax.github.io/DrSax.js/js/record.js');
+
         worker.postMessage({
             command: 'init',
             config: {
