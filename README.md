@@ -23,13 +23,12 @@ We have several examples [on the website](https://reactjs.org/). Here is the fir
 ```jsx
 var DSX = new DSX;
 var gain = new DSX.Amp({gain: 0.5});
-var osc = new DSX.Osc({type:"sawtooth",freq: 500});
-var stereoPan = new DSX.stereoPan({ pan: -1,});
-var osc_pan =new DSX.valueChange("pan",stereoPan.pan); 
+var saxInput = new DSX.Mic();
+var tune = new DSX.Tunner("pitch","note");
 
-osc.connect(gain);
-gain.connect(stereoPan);
-stereoPan.connect(DAC);                  
+saxInput.connect(gain);
+tune.getAnalyser(saxInput);
+gain.connect(DAC);                
       
 ```
 
