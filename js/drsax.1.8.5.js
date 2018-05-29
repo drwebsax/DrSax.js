@@ -1206,7 +1206,7 @@
         this.dataCont.addEventListener("change", dialFunc, false);
 
         function dialFunc(e) {
-            if (typeof b!=="undefined"){
+            if (typeof b !== "undefined") {
                 b.value = e.target.value;
             }
         }
