@@ -1,5 +1,5 @@
 
-<!-- 
+<!--
 
  The MIT License (MIT)
   Copyright (c) 2016  Euyshick Hong(Dr.Hong)
@@ -20,7 +20,7 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 
-  
+
 -->
 
 
@@ -49,7 +49,7 @@
             border: 2px solid #484848;
             border-radius: 25px;
         }
-        
+
         #jb-content {
             width: 670px;
             padding: 20px;
@@ -58,7 +58,7 @@
             border: 4px solid black;
             border-radius: 40px;
         }
-        
+
         #jb-sidebar {
             width: 670px;
             padding: 20px;
@@ -67,7 +67,7 @@
             border: 1px solid #484848;
             border-radius: 25px;
         }
-        
+
         @media screen and (max-width:480px) {
             #jb-header {
                 width: auto;
@@ -86,7 +86,7 @@
         body {
             font-family: "Lato", sans-serif;
         }
-        
+
         ul.tab {
             list-style-type: none;
             margin: 0;
@@ -97,13 +97,13 @@
             border-radius: 10px;
         }
         /* Float the list items side by side */
-        
+
         ul.tab li {
             float: left;
             border: 2px solid black;
         }
         /* Style the links inside the list items */
-        
+
         ul.tab li a {
             display: inline-block;
             color: white;
@@ -114,18 +114,18 @@
             font-size: 17px;
         }
         /* Change background color of links on hover */
-        
+
         ul.tab li a:hover {
             background-color: black;
         }
         /* Create an active/current tablink class */
-        
+
         ul.tab li a:focus,
         .active {
             background-color: gray;
         }
         /* Style the tab content */
-        
+
         .tabcontent {
             display: none;
             padding: 6px 12px;
@@ -222,7 +222,6 @@ function switch1(e) {
     </div>
 
 
-
     <script src="newDSX.1.7.0.2.js"></script>
 
     <script>
@@ -236,34 +235,27 @@ function switch1(e) {
         var qqw = new DSX.DelayPipe({delayTime:1});
         var www = new DSX.DelayPipe({delayTime:3});
         var ttt = new DSX.DelayPipe({delayTime:5});
-     
-     
+
+
 
         DS.get(osc);
         DS.connect(qqw);
         qqw.connect(gain);
 
-
-
         DD.get(osc);
         DS.connect(www);
         www.connect(gain);
 
-
-
         SS.get(osc);
-       DS.connect(ttt);
+        DS.connect(ttt);
         ttt.connect(gain);
 
-
         gain.connect(DAC);
-
-
 
         var oscfrequency = new DSX.valueChange("knob1", osc.frequency);
         var ampgain = new DSX.functionChange("knob2", switch2);
         var sound_on_off = new DSX.functionChange("switch1",switch1);
-    
+
 
         function switch1(e) {
             if (e.target.value == "1") {
@@ -276,14 +268,8 @@ function switch1(e) {
             }
         }
 
-
-
         function switch2(qa) {
-          DS.over=qa.target.value;
-
-          
-            }
-       
+            DS.over=qa.target.value;
 
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
