@@ -13,7 +13,7 @@ You can find the DrSax.js documentation [on the website](https://drwebsax.github
 It is divided into several sections:
 
 * Download
-* Demo Appllication
+* Demo Appllication (https://webaudiojs.github.io/app/apps/#Synthesises)
 * code
 
 ## Examples
