@@ -1,4 +1,4 @@
-# [DrSax.js](https://reactjs.org/)  &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE)
+# [DrSax.js](https://drsax.github.io/DrSAX/lib.1.8.html)  &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://drsax.github.io/DrSAX/lib.1.8.html)
 
 DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio API.
 
@@ -18,7 +18,7 @@ It is divided into several sections:
 
 ## Examples
 
-We have several examples [on the website](https://reactjs.org/). Here is the first one to get you started:
+We have several examples [on the website](https://drsax.github.io/DrSAX/lib.1.8.html). Here is the first one to get you started:
 
 ```jsx
 var DSX = new DSX;
@@ -33,7 +33,7 @@ gain.connect(DAC);
 ```
 
 This example will work mic input and tunning.
-You'll find mic demo application [mic and tunning](https://reactjs.org/docs/introducing-jsx.html). 
+You'll find mic demo application [mic and tunning](https://drsax.github.io/DrSAX/lib.1.8.html). 
 
 ## Download & Installation
 
