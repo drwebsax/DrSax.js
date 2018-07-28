@@ -41,4 +41,4 @@ It is also available on a [CDN](https://drwebsax.github.io/DrSax.js/js/drsax.1.8
 
 ### License
 
-React is MIT licensed.
+DrSax.js is MIT licensed.
