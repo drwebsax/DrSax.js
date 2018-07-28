@@ -2,7 +2,7 @@
 
 DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio API.
 
-* **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.
+* **Declarative:**  
 
 
 [Learn how to use DrSax.js in your own project](https://drwebsax.github.io/DrSax.js/index.html).
