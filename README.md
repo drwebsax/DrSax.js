@@ -33,7 +33,7 @@ gain.connect(DAC);
 ```
 
 This example will work mic input and tunning.
-You'll find mic demo application [mic and tunning](https://drsax.github.io/DrSAX/lib.1.8.html). 
+You'll find mic demo application [mic and tunning](https://drsax.github.io/DrSAX/lib.1.8.html#micstart). 
 
 ## Download & Installation
 
