@@ -1630,7 +1630,7 @@
     DAC = drsax.destination;
     var is_resume=false;
     if(!is_resume){
-        document.body.addEventListener("click", function (){
+        window.document.body.addEventListener("click", function (){
             drsax.resume();
             is_resume =true;
         });
