@@ -1632,11 +1632,13 @@
     if(!is_resume){
         document.body.addEventListener("click", function (){
             drsax.resume();
+            is_resume =true;
         });
         window.addEventListener('touchstart', function () {
             drsax.resume();
+            is_resume =true;
         });
-        is_resume =true;
+     
     }
 
 })(window);
