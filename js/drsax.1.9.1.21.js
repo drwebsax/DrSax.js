@@ -1628,13 +1628,15 @@
     });
 
     DAC = drsax.destination;
-    
     var is_resume=false;
     if(!is_resume){
         document.body.addEventListener("click", function (){
-            is_resume =true;
             drsax.resume();
         });
+        window.addEventListener('touchstart', function () {
+            drsax.resume();
+        });
+        is_resume =true;
     }
 
 })(window);
