@@ -1020,7 +1020,7 @@
     };
 
     // Tunner
-    DSX.prototype.Tunner = function(pit,note) {
+    DSX.prototype.Tunner = function(pit,note,callback) {
 
         this.pit = pit;
         this.note = note;
@@ -1112,6 +1112,8 @@
             } else {
                 this.pitchData = Math.round(ac);
                 pitchElem.innerText = this.pitchData;
+                let dataPit = this.pitchData;
+                callback(dataPit);
 
                 var note =  noteFromPitch(ac);
                 noteElem.innerHTML = noteStrings[note%12];
@@ -1269,7 +1271,7 @@
     };
 
     // ampDomain
-    DSX.prototype.ampDomain = function(out,color,canvasWidth,canvasHeight) {
+    DSX.prototype.ampDomain = function(out,color,canvasWidth,canvasHeight, callback) {
 
         this.out = out;
         this.color =color;
@@ -1298,16 +1300,15 @@
             var minValue = 9999999;
             var maxValue = 0;
             for (var i = 0; i < amplitudeArray.length; i++) {
-            var value = amplitudeArray[i] / 256;
-            if(value > maxValue) {
-            maxValue = value;
-            } else if(value < minValue) {
-            minValue = value;
+                var value = amplitudeArray[i] / 256;
+                if(value > maxValue) {
+                maxValue = value;
+                } else if(value < minValue) {
+                minValue = value;
+                }
             }
-
-
-            }
-
+            callback(maxValue);
+            
             var y_lo = canvasHeight - (canvasHeight * minValue) - 1;
             var y_hi = canvasHeight - (canvasHeight * maxValue) - 1;
             ctx_amp.fillStyle = color;
