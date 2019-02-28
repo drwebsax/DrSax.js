@@ -1113,7 +1113,9 @@
                 this.pitchData = Math.round(ac);
                 pitchElem.innerText = this.pitchData;
                 let dataPit = this.pitchData;
-                callback(dataPit);
+                if (typeof callback === "function") {
+                    callback(dataPit);
+                }
 
                 var note =  noteFromPitch(ac);
                 noteElem.innerHTML = noteStrings[note%12];
