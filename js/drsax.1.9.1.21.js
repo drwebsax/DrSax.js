@@ -1309,8 +1309,10 @@
                 minValue = value;
                 }
             }
-            callback(maxValue);
-            
+            if (typeof callback === "function") {
+                callback(maxValue);
+            }
+        
             var y_lo = canvasHeight - (canvasHeight * minValue) - 1;
             var y_hi = canvasHeight - (canvasHeight * maxValue) - 1;
             ctx_amp.fillStyle = color;
