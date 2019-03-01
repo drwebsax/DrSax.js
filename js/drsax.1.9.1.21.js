@@ -884,7 +884,7 @@
                 return this.delay.delayTime;
             },
             set: function(value) {
-                this.delay.delayTime.value = value / 1000;
+                this.delay.delayTime.value = value;
             }
         },
 
