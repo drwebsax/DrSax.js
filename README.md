@@ -12,7 +12,7 @@ DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio 
 You can find the DrSax.js documentation [on the website](https://drwebsax.github.io/DrSax.js/index.html).  
 It is divided into several sections:
 
-* [Download](https://drwebsax.github.io/DrSax.js/js/drsax.1.8.5.js)
+* [Download](https://drwebsax.github.io/DrSax.js/js/drsax.1.9.1.21.js)
 * [Demo Appllication](https://webaudiojs.github.io/app/apps)
 * [Tutorila site](https://drsax.github.io/DrSAX/lib.1.8.html)
 
@@ -37,7 +37,7 @@ You'll find mic demo application [mic and tunning](https://drsax.github.io/DrSAX
 
 ## Download & Installation
 
-It is also available on a [CDN](https://drwebsax.github.io/DrSax.js/js/drsax.1.8.5.js).
+It is also available on a [CDN](https://drwebsax.github.io/DrSax.js/js/drsax.1.9.1.21.js).
 
 ### License
 
