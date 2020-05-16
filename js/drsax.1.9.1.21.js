@@ -18,12 +18,15 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-;(function(window) {
+;(function(window,undefined) {
 
     var drsaxContext,
         drsaxInstance,
-
-    Super = Object.create(null, {
+        is_resume=false;
+        FLOAT = "float",
+ 
+        
+    ConstructorSet = Object.create(null, {
             activate: {
                 writable: true,
                 value: function(doActivate) {
@@ -78,10 +81,6 @@
 
     });
 
-    var FLOAT = "float",
-        BOOLEAN = "boolean",
-        STRING = "string",
-        INT = "int";
 
     //object and AUDIOCONTEXT
 
@@ -100,31 +99,31 @@
             return new DSX;
         }
 
-        connectify(drsax);
+        initConnect(drsax);
         drsaxContext = drsax;
         drsaxInstance = this;
     }
 
-    function connectify(sax) {
+    function initConnect(sax) {
         if (sax.__connectified__ === true) return;
 
         var gain = sax.createGain(),
             proto = Object.getPrototypeOf(Object.getPrototypeOf(gain)),
-            oconnect = proto.connect;
+            setConnect = proto.connect;
 
-        proto.connect = shimConnect;
+        proto.connect = nodeConnect;
         sax.__connectified__ = true; // Prevent overriding connect more than once
 
-        function shimConnect() {
+        function nodeConnect() {
             var node = arguments[0];
-            arguments[0] = Super.isPrototypeOf? (Super.isPrototypeOf(node)? node.input : node) : (node.input || node);
-            oconnect.apply(this, arguments);
+            arguments[0] = ConstructorSet.isPrototypeOf? (ConstructorSet.isPrototypeOf(node)? node.input : node) : (node.input || node);
+            setConnect.apply(this, arguments);
             return node;
         }
     }
 
-    function initValue(userVal, defaultVal) {
-        return userVal === undefined ? defaultVal : userVal;
+    function defaultVal(userData, defaulData) {
+        return userData === undefined ? defaulData : userData;
     }
 
 
@@ -197,7 +196,7 @@
       this.gain = properties.gain || this.defaults.gain.value;
       this.bypass = properties.bypass || false;
   };
-    DSX.prototype.Amp.prototype = Object.create(Super, {
+    DSX.prototype.Amp.prototype = Object.create(ConstructorSet, {
       name: {
           value: "Amp"
       },
@@ -440,7 +439,7 @@
       this.gain = properties.gain || this.defaults.gain.value;
       this.bypass = properties.bypass || false;
   };
-    DSX.prototype.Subtract.prototype = Object.create(Super, {
+    DSX.prototype.Subtract.prototype = Object.create(ConstructorSet, {
       name: {
           value: "Subtract"
       },
@@ -545,7 +544,7 @@
 
 
   };
-    DSX.prototype.EQ.prototype = Object.create(Super, {
+    DSX.prototype.EQ.prototype = Object.create(ConstructorSet, {
       name: {
           value: "EQ"
       },
@@ -671,7 +670,7 @@
       this.release = properties.release || this.defaults.release.value;
       this.bypass = properties.bypass || false;
   };
-    DSX.prototype.saxComp.prototype = Object.create(Super, {
+    DSX.prototype.saxComp.prototype = Object.create(ConstructorSet, {
       name: {
           value: "saxComp"
       },
@@ -800,7 +799,7 @@
       this.pan = properties.pan || this.defaults.pan.value;
       this.bypass = properties.bypass || false;
   };
-    DSX.prototype.stereoPan.prototype = Object.create(Super, {
+    DSX.prototype.stereoPan.prototype = Object.create(ConstructorSet, {
       name: {
           value: "stereoPan"
       },
@@ -848,10 +847,10 @@
         this.delay.connect(this.output);
 
         this.delayTime = properties.delayTime || this.defaults.delayTime.value;
-        this.feedback = initValue(properties.feedback, this.defaults.feedback.value);
+        this.feedback = defaultVal(properties.feedback, this.defaults.feedback.value);
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.Delay.prototype = Object.create(Super, {
+    DSX.prototype.Delay.prototype = Object.create(ConstructorSet, {
         name: {
             value: "Delay"
         },
@@ -1450,7 +1449,7 @@
         this.gain = properties.gain || this.defaults.gain.value;
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.Aux.prototype = Object.create(Super, {
+    DSX.prototype.Aux.prototype = Object.create(ConstructorSet, {
         name: {
             value: "Aux"
         },
@@ -1499,7 +1498,7 @@
         this.bypass = properties.bypass || false;
 
     };
-    DSX.prototype.Analyser.prototype = Object.create(Super, {
+    DSX.prototype.Analyser.prototype = Object.create(ConstructorSet, {
         name: {
             value: "Analyser"
         },
@@ -1605,7 +1604,7 @@
         this.delayTime = properties.delayTime|| this.defaults.delayTime.value;
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.DelayPipe.prototype = Object.create(Super, {
+    DSX.prototype.DelayPipe.prototype = Object.create(ConstructorSet, {
         name: {
             value: "DelayPipe"
         },
@@ -1633,7 +1632,6 @@
     });
 
     DAC = drsax.destination;
-    var is_resume=false;
     if(!is_resume){
         window.addEventListener("click", function (){
             drsax.resume();
