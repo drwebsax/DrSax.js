@@ -20,7 +20,7 @@
 
 
 
-;(function(window, undefined) {
+;(function(window, Constructor, undefined) {
 
     var drsaxContext,
         drsaxInstance,
@@ -1548,5 +1548,6 @@
     }
 
     DAC = drsax.destination;
+    Constructor.data = drsaxDestination;
 
-})(window);
+})(window, drsaxDestination);
