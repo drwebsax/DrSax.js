@@ -4,16 +4,12 @@ DrSax.js is a  audio library with JavaScript for Web Audio Works from Web Audio 
 
 
 
-
-[Learn how to use DrSax.js in your own project](https://drwebsax.github.io/DrSax.js/index.html).
-
 ## Tutorial site
 
-You can find the DrSax.js documentation [on the website](https://drwebsax.github.io/DrSax.js/index.html).  
+You can find the DrSax.js documentation [on the website](https://drsax.github.io/DrSAX/lib.1.8.html).  
 It is divided into several sections:
 
 * [Download](https://drwebsax.github.io/DrSax.js/js/drsax.1.9.1.21.js)
-* [Demo Appllication](https://webaudiojs.github.io/app/apps)
 * [Tutorila site](https://drsax.github.io/DrSAX/lib.1.8.html)
 
 ## Examples
