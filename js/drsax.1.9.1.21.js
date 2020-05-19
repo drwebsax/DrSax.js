@@ -1,10 +1,10 @@
 
 //  The MIT License (MIT)
-//  Copyright (c) 2016  Euyshick Hong(Dr.Hong)
+//  Copyright (c) 2020  Euyshick Hong(Dr.Hong)
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
-///  in the Software without restriction, including without limitation the rights
+//  in the Software without restriction, including without limitation the rights
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
 //  furnished to do so, subject to the following conditions:
@@ -18,75 +18,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-;(function(window) {
+
+
+;(function(window, undefined) {
 
     var drsaxContext,
         drsaxInstance,
+        FLOAT = "float",
+        is_resume=false,
+        root = this,
+        AudioContext = root.AudioContext;
 
-    Super = Object.create(null, {
-            activate: {
-                writable: true,
-                value: function(doActivate) {
-                    if (doActivate) {
-                        this.input.disconnect();
-                        this.input.connect(this.activateNode);
-                        if (this.activateCallback) {
-                            this.activateCallback(doActivate);
-                        }
-                    } else {
-                        this.input.disconnect();
-                        this.input.connect(this.output);
-                    }
-                }
-            },
-            bypass: {
-                get: function() {
-                    return this._bypass;
-                },
-                set: function(value) {
-                    if (this._lastBypassValue === value) {
-                        return;
-                    }
-                    this._bypass = value;
-                    this.activate(!value);
-                    this._lastBypassValue = value;
-                }
-            },
-            connect: {
-                value: function(target) {
-                    this.output.connect(target);
-                }
-            },
-            disconnect: {
-                value: function(target) {
-                    this.output.disconnect(target);
-                }
-            },
 
-            getDefaults: {
-                value: function() {
-                    var result = {};
-                    for (var key in this.defaults) {
-                        result[key] = this.defaults[key].value;
-                    }
-                    return result;
-                }
-            }
-        });
-
-    OscObject = Object.create(null, {
-
-    });
-
-    var FLOAT = "float",
-        BOOLEAN = "boolean",
-        STRING = "string",
-        INT = "int";
-
-    //object and AUDIOCONTEXT
-
-    var root = this;
-    var AudioContext = root.AudioContext;
+    //Object and AudioContext
     drsax = new AudioContext();
 
     if (typeof module !== "undefined" && module.exports) {
@@ -99,34 +43,13 @@
         if (!(this instanceof DSX)) {
             return new DSX;
         }
-
-        connectify(drsax);
         drsaxContext = drsax;
         drsaxInstance = this;
     }
 
-    function connectify(sax) {
-        if (sax.__connectified__ === true) return;
-
-        var gain = sax.createGain(),
-            proto = Object.getPrototypeOf(Object.getPrototypeOf(gain)),
-            oconnect = proto.connect;
-
-        proto.connect = shimConnect;
-        sax.__connectified__ = true; // Prevent overriding connect more than once
-
-        function shimConnect() {
-            var node = arguments[0];
-            arguments[0] = Super.isPrototypeOf? (Super.isPrototypeOf(node)? node.input : node) : (node.input || node);
-            oconnect.apply(this, arguments);
-            return node;
-        }
-    }
-
-    function initValue(userVal, defaultVal) {
-        return userVal === undefined ? defaultVal : userVal;
-    }
-
+    OscObject = Object.create(null, {
+        // todo
+    });
 
 
     // osc
@@ -158,682 +81,665 @@
     DSX.prototype.Osc.prototype = Object.create(OscObject, {
 
        type: {
-                enumerable: true,
-                get: function() {
-                    return this.drOsc;
-                },
-                set: function(value) {
-                     this.drOsc.type= value;
-                }
+            enumerable: true,
+            get: function() {
+                return this.drOsc;
             },
-
-
-
-          freq: {
-              enumerable: true,
-              get: function() {
-                  return this.drOsc.frequency;
-              },
-              set: function(value) {
-                   this.drOsc.frequency.value= value;
-              }
-          }
-      });
+            set: function(value) {
+                    this.drOsc.type= value;
+            }
+        },
+        freq: {
+            enumerable: true,
+            get: function() {
+                return this.drOsc.frequency;
+            },
+            set: function(value) {
+                this.drOsc.frequency.value= value;
+            }
+        }
+    });
 
     // amp
     DSX.prototype.Amp = function(properties) {
-      if (!properties) {
-          properties = this.getDefaults();
-      }
-      this.input = drsaxContext.createGain();
-      this.activateNode = drsaxContext.createGain();
+        if (!properties) {
+            properties = this.getDefaultData();
+        }
+        this.input = drsaxContext.createGain();
+        this.activateNode = drsaxContext.createGain();
 
-      this.Amp = drsaxContext.createGain();
-      this.output = drsaxContext.createGain();
+        this.Amp = drsaxContext.createGain();
+        this.output = drsaxContext.createGain();
 
-      this.activateNode.connect(this.Amp);
-      this.Amp.connect(this.output);
+        this.activateNode.connect(this.Amp);
+        this.Amp.connect(this.output);
 
-      this.gain = properties.gain || this.defaults.gain.value;
-      this.bypass = properties.bypass || false;
-  };
-    DSX.prototype.Amp.prototype = Object.create(Super, {
-      name: {
-          value: "Amp"
-      },
-      defaults: {
-          writable: true,
-          value: {
-              gain: {
-                  value: 0,
-                  min: 0,
-                  max: 1,
-                  automatable: false,
-                  type: FLOAT
-              },
-
-
-          }
-      },
-      gain: {
-          enumerable: true,
-          get: function() {
-              return this.Amp.gain;
-          },
-          set: function(value) {
-              this.Amp.gain.value = value;
-          }
-      }
-
-
-  });
+        this.gain = properties.gain || this.defaults.gain.value;
+        this.bypass = properties.bypass || false;
+    };
+    DSX.prototype.Amp.prototype = Object.create(ConstructorInit, {
+        name: {
+            value: "Amp"
+        },
+        defaults: {
+            writable: true,
+            value: {
+                gain: {
+                    value: 0,
+                    min: 0,
+                    max: 1,
+                    automatable: false,
+                    type: FLOAT
+                },
+            }
+        },
+        gain: {
+            enumerable: true,
+            get: function() {
+                return this.Amp.gain;
+            },
+            set: function(value) {
+                this.Amp.gain.value = value;
+            }
+        }
+   });
 
     // atttack release
     DSX.prototype.ATRS = function() {
 
-      this.gain = drsax.createGain();
-      this.gain1= drsax.createGain();
-      this.gain2= drsax.createGain();
+        this.gain = drsax.createGain();
+        this.gain1= drsax.createGain();
+        this.gain2= drsax.createGain();
 
-      this.attack =  this.gain1.gain;
-      this.release = this.gain2.gain;
+        this.attack =  this.gain1.gain;
+        this.release = this.gain2.gain;
 
-      this.soundfrom = function(sound) {
+        this.soundfrom = function(sound) {
 
-          this.sound=sound;
-          this.sound.connect(this.gain);
-          this.now = drsax.currentTime;
-          this.gain.gain.cancelScheduledValues(this.now);
-          this.gain.gain.setValueAtTime(0, this.now);
-          this.gain.gain.linearRampToValueAtTime(1, this.now+ 0.01 + this.attack.value);
-          this.gain.gain.linearRampToValueAtTime(0 , this.now +0.02 + this.attack.value + this.release.value);
-      };
+            this.sound=sound;
+            this.sound.connect(this.gain);
+            this.now = drsax.currentTime;
+            this.gain.gain.cancelScheduledValues(this.now);
+            this.gain.gain.setValueAtTime(0, this.now);
+            this.gain.gain.linearRampToValueAtTime(1, this.now+ 0.01 + this.attack.value);
+            this.gain.gain.linearRampToValueAtTime(0 , this.now +0.02 + this.attack.value + this.release.value);
+        };
 
-      this.connect = function(out) {
-          this.out = out;
-          this.gain.connect(out);
-      };
-  };
+        this.connect = function(out) {
+            this.out = out;
+            this.gain.connect(out);
+        };
+    };
 
 
 
     // FM
     DSX.prototype.FM = function(properties) {
 
-      this.CAOsc = drsax.createOscillator();
-      this.FMOsc = drsax.createOscillator();
+        this.CAOsc = drsax.createOscillator();
+        this.FMOsc = drsax.createOscillator();
 
-      this.gain1 = drsax.createGain();
-      this.mainout = drsax.createGain();
+        this.gain1 = drsax.createGain();
+        this.mainout = drsax.createGain();
 
-      this.CAOsc.connect(this.mainout);
-      this.FMOsc.connect(this.gain1);
-      this.gain1.connect(this.CAOsc.frequency);
+        this.CAOsc.connect(this.mainout);
+        this.FMOsc.connect(this.gain1);
+        this.gain1.connect(this.CAOsc.frequency);
 
-      this.FMOsc.start(0);
-      this.CAOsc.start(0);
+        this.FMOsc.start(0);
+        this.CAOsc.start(0);
 
-      this.connect = function(out) {
-          this.out = out;
-          this.mainout.connect(out);
-      };
+        this.connect = function(out) {
+            this.out = out;
+            this.mainout.connect(out);
+        };
 
-      this.stop = function() {
-          this.mainout.disconnect();
-      };
-      this.carrier_type =properties.carrier_type;
-      this.carrier = properties.carrier;
-      this.modfreq =properties. modfreq;
-      this.mod_type = properties.mod_type;
-      this.depth =properties.depth;
-      this.gain =properties.gain;
-  };
+        this.stop = function() {
+            this.mainout.disconnect();
+        };
+        this.carrier_type =properties.carrier_type;
+        this.carrier = properties.carrier;
+        this.modfreq =properties. modfreq;
+        this.mod_type = properties.mod_type;
+        this.depth =properties.depth;
+        this.gain =properties.gain;
+    };
     DSX.prototype.FM.prototype = Object.create(OscObject, {
 
-         carrier_type: {
-              enumerable: true,
-              get: function() {
-                  return this.CAOsc;
-              },
-              set: function(value) {
-                   this.CAOsc.type= value;
-              }
-          },
-          carrier: {
-              enumerable: true,
-              get: function() {
-                  return this.CAOsc.frequency;
-              },
-              set: function(value) {
-                   this.CAOsc.frequency.value= value;
-              }
-          },
-          mod_type: {
-              enumerable: true,
-              get: function() {
-                  return this.FMOsc;
-              },
-              set: function(value) {
-                   this.FMOsc.type= value;
-              }
-          },
-          modfreq: {
-              enumerable: true,
-              get: function() {
-                  return this.FMOsc.frequency;
-              },
-              set: function(value) {
-                   this.FMOsc.frequency.value= value;
-              }
-          },
-          depth: {
-              enumerable: true,
-              get: function() {
-                  return this.gain1.gain;
-              },
-              set: function(value) {
-                   this.gain1.gain.value= value;
-              }
-          },
-          gain: {
-              enumerable: true,
-              get: function() {
-                  return this.mainout.gain;
-              },
-              set: function(value) {
-                   this.mainout.gain.value= value;
-              }
-          }
-      });
+        carrier_type: {
+            enumerable: true,
+            get: function() {
+                return this.CAOsc;
+            },
+            set: function(value) {
+                this.CAOsc.type= value;
+            }
+        },
+        carrier: {
+            enumerable: true,
+            get: function() {
+                return this.CAOsc.frequency;
+            },
+            set: function(value) {
+                this.CAOsc.frequency.value= value;
+            }
+        },
+        mod_type: {
+            enumerable: true,
+            get: function() {
+                return this.FMOsc;
+            },
+            set: function(value) {
+                this.FMOsc.type= value;
+            }
+        },
+        modfreq: {
+            enumerable: true,
+            get: function() {
+                return this.FMOsc.frequency;
+            },
+            set: function(value) {
+                this.FMOsc.frequency.value= value;
+            }
+        },
+        depth: {
+            enumerable: true,
+            get: function() {
+                return this.gain1.gain;
+            },
+            set: function(value) {
+                this.gain1.gain.value= value;
+            }
+        },
+        gain: {
+            enumerable: true,
+            get: function() {
+                return this.mainout.gain;
+            },
+            set: function(value) {
+                this.mainout.gain.value= value;
+            }
+        }
+    });
 
     // Am
     DSX.prototype.AM = function(properties) {
 
-      this.AMOsc = drsax.createOscillator();
-      this.gain1 = drsax.createGain();
-      this.mainout = drsax.createGain();
-      this.depth_gain = drsax.createGain();
+        this.AMOsc = drsax.createOscillator();
+        this.gain1 = drsax.createGain();
+        this.mainout = drsax.createGain();
+        this.depth_gain = drsax.createGain();
 
-      this.AMOsc.connect(this.gain1);
-      this.gain1.connect(this.mainout.gain);
-      this.depth_gain.connect(this.mainout.gain);
+        this.AMOsc.connect(this.gain1);
+        this.gain1.connect(this.mainout.gain);
+        this.depth_gain.connect(this.mainout.gain);
 
-      this.AMOsc.start(0);
+        this.AMOsc.start(0);
 
-      this.get = function(dat) {
-          this.dat = dat;
-          this.dat.connect(this.mainout);
-      };
+        this.get = function(dat) {
+            this.dat = dat;
+            this.dat.connect(this.mainout);
+        };
+        this.connect = function(out) {
+            this.out = out;
+            this.mainout.connect(out);
+        };
+        this.stop = function() {
+            this.mainout.disconnect();
+        };
 
+        this.modfreq =properties. modfreq;
+        this.mod_type = properties.mod_type;
+        this.depth =properties.depth;
+        this.gain =properties.gain;
+    };
 
-      this.connect = function(out) {
-          this.out = out;
-          this.mainout.connect(out);
-      };
-      this.stop = function() {
-          this.mainout.disconnect();
-      };
-
-      this.modfreq =properties. modfreq;
-      this.mod_type = properties.mod_type;
-      this.depth =properties.depth;
-      this.gain =properties.gain;
-  };
     DSX.prototype.AM.prototype = Object.create(OscObject, {
 
-    mod_type: {
-          enumerable: true,
-          get: function() {
-              return this.AMOsc;
-          },
-          set: function(value) {
-               this.AMOsc.type= value;
-          }
-      },
+        mod_type: {
+            enumerable: true,
+            get: function() {
+                return this.AMOsc;
+            },
+            set: function(value) {
+                this.AMOsc.type= value;
+            }
+        },
 
-      modfreq: {
-          enumerable: true,
-          get: function() {
-              return this.AMOsc.frequency;
-          },
-          set: function(value) {
-               this.AMOsc.frequency.value= value;
-          }
-      },
+        modfreq: {
+            enumerable: true,
+            get: function() {
+                return this.AMOsc.frequency;
+            },
+            set: function(value) {
+                this.AMOsc.frequency.value= value;
+            }
+        },
 
-      depth: {
-          enumerable: true,
-          get: function() {
-              return this.gain1.gain;
-          },
-          set: function(value) {
-               this.gain1.gain.value= value;
-          }
-      },
+        depth: {
+            enumerable: true,
+            get: function() {
+                return this.gain1.gain;
+            },
+            set: function(value) {
+                this.gain1.gain.value= value;
+            }
+        },
 
-      gain: {
-          enumerable: true,
-          get: function() {
-              return this.mainout.gain;
-          },
-          set: function(value) {
-               this.mainout.gain.value= value;
-          }
-      }
-  });
+        gain: {
+            enumerable: true,
+            get: function() {
+                return this.mainout.gain;
+            },
+            set: function(value) {
+                this.mainout.gain.value= value;
+            }
+        }
+    });
 
     // Subtract
     DSX.prototype.Subtract = function(properties) {
-      if (!properties) {
-          properties = this.getDefaults();
-      }
-      this.input = drsaxContext.createGain();
-      this.activateNode = drsaxContext.createGain();
-      this.Lowpass = drsax.createBiquadFilter();
-      this.output = drsaxContext.createGain();
+        if (!properties) {
+            properties = this.getDefaultData();
+        }
+        this.input = drsaxContext.createGain();
+        this.activateNode = drsaxContext.createGain();
+        this.Lowpass = drsax.createBiquadFilter();
+        this.output = drsaxContext.createGain();
 
-      this.activateNode.connect(this.Lowpass);
-      this.Lowpass.connect(this.output);
+        this.activateNode.connect(this.Lowpass);
+        this.Lowpass.connect(this.output);
 
-      this.cutoff = properties.cutoff || this.defaults.cutoff.value;
-      this.resonance = properties.resonance || this.defaults.resonance.value;
-      this.gain = properties.gain || this.defaults.gain.value;
-      this.bypass = properties.bypass || false;
-  };
-    DSX.prototype.Subtract.prototype = Object.create(Super, {
-      name: {
-          value: "Subtract"
-      },
-      defaults: {
-          writable: true,
-          value: {
-              cutoff: {
-                  value: 1000,
-                  min: 0,
-                  max: 2000,
-                  automatable: false,
-                  type: FLOAT
-              },
-              resonance: {
-                  value: 0,
-                  min: 0,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              },
-              gain: {
-                  value: 0.8,
-                  min: 0,
-                  max: 1,
-                  automatable: false,
-                  type: FLOAT
-              },
-          }
-      },
-      cutoff: {
-          enumerable: true,
-          get: function() {
-              return this.Lowpass.frequency;
-          },
-          set: function(value) {
-              this.Lowpass.frequency.value = value;
-          }
-      },
-      resonance: {
-          enumerable: true,
-          get: function() {
-              return this.Lowpass.Q;
-          },
-          set: function(value) {
-              this.Lowpass.Q.value = value;
-          }
-      },
-      gain: {
-          enumerable: true,
-          get: function() {
-              return this.output.gain;
-          },
-          set: function(value) {
-              this.output.gain.value = value;
-          }
-      }
-  });
+        this.cutoff = properties.cutoff || this.defaults.cutoff.value;
+        this.resonance = properties.resonance || this.defaults.resonance.value;
+        this.gain = properties.gain || this.defaults.gain.value;
+        this.bypass = properties.bypass || false;
+    };
+    DSX.prototype.Subtract.prototype = Object.create(ConstructorInit, {
+        name: {
+            value: "Subtract"
+        },
+        defaults: {
+            writable: true,
+            value: {
+                cutoff: {
+                    value: 1000,
+                    min: 0,
+                    max: 2000,
+                    automatable: false,
+                    type: FLOAT
+                },
+                resonance: {
+                    value: 0,
+                    min: 0,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                },
+                gain: {
+                    value: 0.8,
+                    min: 0,
+                    max: 1,
+                    automatable: false,
+                    type: FLOAT
+                },
+            }
+        },
+        cutoff: {
+            enumerable: true,
+            get: function() {
+                return this.Lowpass.frequency;
+            },
+            set: function(value) {
+                this.Lowpass.frequency.value = value;
+            }
+        },
+        resonance: {
+            enumerable: true,
+            get: function() {
+                return this.Lowpass.Q;
+            },
+            set: function(value) {
+                this.Lowpass.Q.value = value;
+            }
+        },
+        gain: {
+            enumerable: true,
+            get: function() {
+                return this.output.gain;
+            },
+            set: function(value) {
+                this.output.gain.value = value;
+            }
+        }
+    });
 
 
 
     // 5EQ
     DSX.prototype.EQ = function(properties) {
-      if (!properties) {
-          properties = this.getDefaults();
-      }
-      this.input = drsaxContext.createGain();
-      this.activateNode = drsaxContext.createGain();
+        if (!properties) {
+            properties = this.getDefaultData();
+        }
+        this.input = drsaxContext.createGain();
+        this.activateNode = drsaxContext.createGain();
 
-      this.high = drsaxContext.createBiquadFilter();
-      this.midhigh = drsaxContext.createBiquadFilter();
-      this.mid = drsaxContext.createBiquadFilter();
-      this.midlow = drsaxContext.createBiquadFilter();
-      this.low = drsaxContext.createBiquadFilter();
-      this.output = drsaxContext.createGain();
+        this.high = drsaxContext.createBiquadFilter();
+        this.midhigh = drsaxContext.createBiquadFilter();
+        this.mid = drsaxContext.createBiquadFilter();
+        this.midlow = drsaxContext.createBiquadFilter();
+        this.low = drsaxContext.createBiquadFilter();
+        this.output = drsaxContext.createGain();
 
-      this.activateNode.connect(this.high);
-      this.high.connect(this.midhigh);
-      this.midhigh.connect(this.mid);
-      this.mid.connect(this.midlow);
-      this.midlow.connect(this.low);
-      this.low.connect(this.output);
+        this.activateNode.connect(this.high);
+        this.high.connect(this.midhigh);
+        this.midhigh.connect(this.mid);
+        this.mid.connect(this.midlow);
+        this.midlow.connect(this.low);
+        this.low.connect(this.output);
 
-      this.high.type = "highshelf";
-      this.midhigh.type = "highshelf";
-      this.mid.type = "peaking";
-      this.midlow.type = "lowshelf";
-      this.low.type = "lowshelf";
-      this.high.frequency.value = 13000;
-      this.midhigh.frequency.value = 4000;
-      this.mid.frequency.value = 1000;
-      this.midlow.frequency.value = 250;
-      this.low.frequency.value = 62.5;
-      this.mid.Q.value = 1;
+        this.high.type = "highshelf";
+        this.midhigh.type = "highshelf";
+        this.mid.type = "peaking";
+        this.midlow.type = "lowshelf";
+        this.low.type = "lowshelf";
+        this.high.frequency.value = 13000;
+        this.midhigh.frequency.value = 4000;
+        this.mid.frequency.value = 1000;
+        this.midlow.frequency.value = 250;
+        this.low.frequency.value = 62.5;
+        this.mid.Q.value = 1;
 
-      this.hiGain = properties.hiGain || this.defaults.hiGain.value;
-      this.mhiGain = properties.mhiGain || this.defaults.mhiGain.value;
-      this.miGain = properties.miGain || this.defaults.miGain.value;
-      this.milowGain = properties.milowGain || this.defaults.milowGain.value;
-      this.lowGain = properties.lowGain || this.defaults.lowGain.value;
+        this.hiGain = properties.hiGain || this.defaults.hiGain.value;
+        this.mhiGain = properties.mhiGain || this.defaults.mhiGain.value;
+        this.miGain = properties.miGain || this.defaults.miGain.value;
+        this.milowGain = properties.milowGain || this.defaults.milowGain.value;
+        this.lowGain = properties.lowGain || this.defaults.lowGain.value;
 
-      this.bypass = properties.bypass || false;
+        this.bypass = properties.bypass || false;
 
+    };
 
-  };
-    DSX.prototype.EQ.prototype = Object.create(Super, {
-      name: {
-          value: "EQ"
-      },
-      defaults: {
-          writable: true,
-          value: {
+    DSX.prototype.EQ.prototype = Object.create(ConstructorInit, {
+        name: {
+            value: "EQ"
+        },
+        defaults: {
+            writable: true,
+            value: {
 
-              hiGain: {
-                  value: -10,
-                  min: -20,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              },
+                hiGain: {
+                    value: -10,
+                    min: -20,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                },
 
-              mhiGain: {
-                  value: -10,
-                  min: -20,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              },
+                mhiGain: {
+                    value: -10,
+                    min: -20,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                },
 
-              miGain: {
-                  value: -10,
-                  min: -20,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              },
+                miGain: {
+                    value: -10,
+                    min: -20,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                },
 
-              milowGain: {
-                  value: -10,
-                  min: -20,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              },
+                milowGain: {
+                    value: -10,
+                    min: -20,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                },
 
-              lowGain: {
-                  value: -10,
-                  min: -20,
-                  max: 20,
-                  automatable: false,
-                  type: FLOAT
-              }
+                lowGain: {
+                    value: -10,
+                    min: -20,
+                    max: 20,
+                    automatable: false,
+                    type: FLOAT
+                }
 
-          }
-      },
+            }
+        },
 
-      hiGain: {
-          enumerable: true,
-          get: function() {
-              return this.high.gain;
-          },
-          set: function(value) {
-              this.high.gain.value = value;
-          }
-      },
+        hiGain: {
+            enumerable: true,
+            get: function() {
+                return this.high.gain;
+            },
+            set: function(value) {
+                this.high.gain.value = value;
+            }
+        },
 
-      mhiGain: {
-          enumerable: true,
-          get: function() {
-              return this.midhigh.gain;
-          },
-          set: function(value) {
-              this.midhigh.gain.value = value;
-          }
-      },
+        mhiGain: {
+            enumerable: true,
+            get: function() {
+                return this.midhigh.gain;
+            },
+            set: function(value) {
+                this.midhigh.gain.value = value;
+            }
+        },
 
-      miGain: {
-          enumerable: true,
-          get: function() {
-              return this.mid.gain;
-          },
-          set: function(value) {
-              this.mid.gain.value = value;
-          }
-      },
+        miGain: {
+            enumerable: true,
+            get: function() {
+                return this.mid.gain;
+            },
+            set: function(value) {
+                this.mid.gain.value = value;
+            }
+        },
 
-      milowGain: {
-          enumerable: true,
-          get: function() {
-              return this.midlow.gain;
-          },
-          set: function(value) {
-              this.midlow.gain.value = value;
-          }
-      },
+        milowGain: {
+            enumerable: true,
+            get: function() {
+                return this.midlow.gain;
+            },
+            set: function(value) {
+                this.midlow.gain.value = value;
+            }
+        },
 
-      lowGain: {
-          enumerable: true,
-          get: function() {
-              return this.low.gain;
-          },
-          set: function(value) {
-              this.low.gain.value = value;
-          }
-      }
-
-
-  });
+        lowGain: {
+            enumerable: true,
+            get: function() {
+                return this.low.gain;
+            },
+            set: function(value) {
+                this.low.gain.value = value;
+            }
+        }
+    });
 
     // saxComp
     DSX.prototype.saxComp = function(properties) {
-      if (!properties) {
-          properties = this.getDefaults();
-      }
-      this.input = drsaxContext.createGain();
-      this.activateNode = drsaxContext.createGain();
+        if (!properties) {
+            properties = this.getDefaultData();
+        }
+        this.input = drsaxContext.createGain();
+        this.activateNode = drsaxContext.createGain();
 
-      this.saxComp = drsaxContext.createDynamicsCompressor();
-      this.output = drsaxContext.createGain();
+        this.saxComp = drsaxContext.createDynamicsCompressor();
+        this.output = drsaxContext.createGain();
 
-      this.activateNode.connect(this.saxComp);
-      this.saxComp.connect(this.output);
+        this.activateNode.connect(this.saxComp);
+        this.saxComp.connect(this.output);
 
-      this.threshold = properties.threshold || this.defaults.threshold.value;
-      this.knee = properties.knee || this.defaults.knee.value;
-      this.ratio = properties.ratio || this.defaults.ratio.value;
-      this.reduction = properties.reduction || this.defaults.reduction.value;
-      this.attack = properties.attack || this.defaults.attack.value;
-      this.release = properties.release || this.defaults.release.value;
-      this.bypass = properties.bypass || false;
-  };
-    DSX.prototype.saxComp.prototype = Object.create(Super, {
-      name: {
-          value: "saxComp"
-      },
-      defaults: {
-          writable: true,
-          value: {
-              threshold: {
-                  value: -70,
-                  min: -100,
-                  max: 0,
-                  automatable: false,
-                  type: FLOAT
-              },
-              knee: {
-                  value: 40,
-                  min: 0,
-                  max: 100,
-                  automatable: true,
-                  type: FLOAT
-              },
+        this.threshold = properties.threshold || this.defaults.threshold.value;
+        this.knee = properties.knee || this.defaults.knee.value;
+        this.ratio = properties.ratio || this.defaults.ratio.value;
+        this.reduction = properties.reduction || this.defaults.reduction.value;
+        this.attack = properties.attack || this.defaults.attack.value;
+        this.release = properties.release || this.defaults.release.value;
+        this.bypass = properties.bypass || false;
+    };
 
-              ratio: {
-                  value: 12,
-                  min: 0,
-                  max: 15,
-                  automatable: true,
-                  type: FLOAT
-              },
-              reduction: {
-                  value: -20,
-                  min: -40,
-                  max: 0,
-                  automatable: true,
-                  type: FLOAT
-              },
+    DSX.prototype.saxComp.prototype = Object.create(ConstructorInit, {
+        name: {
+            value: "saxComp"
+        },
+        defaults: {
+            writable: true,
+            value: {
+                threshold: {
+                    value: -70,
+                    min: -100,
+                    max: 0,
+                    automatable: false,
+                    type: FLOAT
+                },
+                knee: {
+                    value: 40,
+                    min: 0,
+                    max: 100,
+                    automatable: true,
+                    type: FLOAT
+                },
+                ratio: {
+                    value: 12,
+                    min: 0,
+                    max: 15,
+                    automatable: true,
+                    type: FLOAT
+                },
+                reduction: {
+                    value: -20,
+                    min: -40,
+                    max: 0,
+                    automatable: true,
+                    type: FLOAT
+                },
+                attack: {
+                    value: 0,
+                    min: 0,
+                    max: 5,
+                    automatable: true,
+                    type: FLOAT
+                },
+                release: {
+                    value: 0.25,
+                    min: 0,
+                    max: 0.5,
+                    automatable: true,
+                    type: FLOAT
+                },
 
-              attack: {
-                  value: 0,
-                  min: 0,
-                  max: 5,
-                  automatable: true,
-                  type: FLOAT
-              },
-
-              release: {
-                  value: 0.25,
-                  min: 0,
-                  max: 0.5,
-                  automatable: true,
-                  type: FLOAT
-              },
-
-          }
-      },
-      threshold: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.threshold;
-          },
-          set: function(value) {
-              this.saxComp.threshold.value = value;
-          }
-      },
-
-      knee: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.knee;
-          },
-          set: function(value) {
-              this.saxComp.knee.value = value;
-          }
-      },
-      ratio: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.ratio;
-          },
-          set: function(value) {
-              this.saxComp.ratio.value = value;
-          }
-      },
-      reduction: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.reduction;
-          },
-          set: function(value) {
-              this.saxComp.reduction.value = value;
-          }
-      },
-      attack: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.attack;
-          },
-          set: function(value) {
-              this.saxComp.attack.value = value;
-          }
-      },
-      release: {
-          enumerable: true,
-          get: function() {
-              return this.saxComp.release;
-          },
-          set: function(value) {
-              this.saxComp.release.value = value;
-          }
-      }
-  });
+            }
+        },
+        threshold: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.threshold;
+            },
+            set: function(value) {
+                this.saxComp.threshold.value = value;
+            }
+        },
+        knee: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.knee;
+            },
+            set: function(value) {
+                this.saxComp.knee.value = value;
+            }
+        },
+        ratio: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.ratio;
+            },
+            set: function(value) {
+                this.saxComp.ratio.value = value;
+            }
+        },
+        reduction: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.reduction;
+            },
+            set: function(value) {
+                this.saxComp.reduction.value = value;
+            }
+        },
+        attack: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.attack;
+            },
+            set: function(value) {
+                this.saxComp.attack.value = value;
+            }
+        },
+        release: {
+            enumerable: true,
+            get: function() {
+                return this.saxComp.release;
+            },
+            set: function(value) {
+                this.saxComp.release.value = value;
+            }
+        }
+    });
 
     // stereopanning
     DSX.prototype.stereoPan = function(properties) {
-      if (!properties) {
-          properties = this.getDefaults();
-      }
-      this.input = drsaxContext.createGain();
-      this.activateNode = drsaxContext.createGain();
-      this.stereoPan = drsaxContext.createStereoPanner();
-      this.output = drsaxContext.createGain();
+        if (!properties) {
+            properties = this.getDefaultData();
+        }
+        this.input = drsaxContext.createGain();
+        this.activateNode = drsaxContext.createGain();
+        this.stereoPan = drsaxContext.createStereoPanner();
+        this.output = drsaxContext.createGain();
 
-      this.activateNode.connect(this.stereoPan);
-      this.stereoPan.connect(this.output);
+        this.activateNode.connect(this.stereoPan);
+        this.stereoPan.connect(this.output);
 
-
-      this.pan = properties.pan || this.defaults.pan.value;
-      this.bypass = properties.bypass || false;
-  };
-    DSX.prototype.stereoPan.prototype = Object.create(Super, {
-      name: {
-          value: "stereoPan"
-      },
-      defaults: {
-          writable: true,
-          value: {
-              pan:{
-                  value: 0,
-                  min: -1,
-                  max: 1,
-                  automatable: false,
-                  type: FLOAT
-              },
-
-          }
-      },
-
-
-      pan: {
-          enumerable: true,
-          get: function(){
-              return this.stereoPan.pan;
-          },
-          set: function(value) {
-              this.stereoPan.pan.value = value;
-          }
-      }
-  });
+        this.pan = properties.pan || this.defaults.pan.value;
+        this.bypass = properties.bypass || false;
+    };
+    DSX.prototype.stereoPan.prototype = Object.create(ConstructorInit, {
+        name: {
+            value: "stereoPan"
+        },
+        defaults: {
+            writable: true,
+            value: {
+                pan:{
+                    value: 0,
+                    min: -1,
+                    max: 1,
+                    automatable: false,
+                    type: FLOAT
+                },
+            }
+        },
+        pan: {
+            enumerable: true,
+            get: function(){
+                return this.stereoPan.pan;
+            },
+            set: function(value) {
+                this.stereoPan.pan.value = value;
+            }
+        }
+    });
 
     // Delay
     DSX.prototype.Delay = function(properties) {
         if (!properties) {
-            properties = this.getDefaults();
+            properties = this.getDefaultData();
         }
         this.input = drsaxContext.createGain();
         this.activateNode = drsaxContext.createGain();
@@ -851,7 +757,7 @@
         this.feedback = initValue(properties.feedback, this.defaults.feedback.value);
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.Delay.prototype = Object.create(Super, {
+    DSX.prototype.Delay.prototype = Object.create(ConstructorInit, {
         name: {
             value: "Delay"
         },
@@ -872,10 +778,6 @@
                     automatable: true,
                     type: FLOAT
                 },
-
-
-
-
             }
         },
         delayTime: {
@@ -887,7 +789,6 @@
                 this.delay.delayTime.value = value;
             }
         },
-
         feedback: {
             enumerable: true,
             get: function() {
@@ -905,15 +806,15 @@
         this.reverb_Gain = drsax.createGain();
         this.reverb_convolver = drsax.createConvolver();
         this.masterGain = drsax.createGain();
-       // this.gain = this.reverb_Gain.gain; ///////simple datachange
+       // this.gain = this.reverb_Gain.gain; //simple datachange
 
         this.reverb_convolver.loop = false;
         this.reverb_convolver.normalize = true;
 
         var reverbfile;
         var revebRequest = new XMLHttpRequest();
-        //revebRequest.open('GET', 'https://drsax.github.io/DrSAX/DrSAX/reverbbg.wav', true);
-        revebRequest.open('GET', 'https://drwebsax.github.io/DrSax.js/import/rvb.wav', true);
+    
+        revebRequest.open('GET', 'https://dhon9.github.io/drsaxCore/import/rvb.wav', true);
         revebRequest.responseType = 'arraybuffer';
         revebRequest.send();
 
@@ -924,7 +825,7 @@
                 reverbfile = buffer;
             },
             function(e) {
-                console.log("Error with decoding audio data"+e.err);
+                console.log("Error with decoding audio "+e.err);
             });
         };
 
@@ -953,6 +854,7 @@
         this.gain = properties.gain;
 
     };
+
     DSX.prototype.Reverb.prototype = Object.create(OscObject, {
         gain: {
             enumerable: true,
@@ -986,25 +888,26 @@
     //     };
     //
     // };
+
     DSX.prototype.Mic = function() {
 
         navigator.getUserMedia = (navigator.getUserMedia ||
                             navigator.webkitGetUserMedia ||
                             navigator.mozGetUserMedia ||
                             navigator.msGetUserMedia);
-       if (navigator.mediaDevices.getUserMedia) {
+        if (navigator.mediaDevices.getUserMedia) {
 
-          var p = navigator.mediaDevices.getUserMedia({ audio: { latency: 0.05, echoCancellation: false, noiseSuppression: true, autoGainControl: true} });
-          p.then(function(stream) {
-              mic_stream(stream);
-          });
+            var preSetMedia = navigator.mediaDevices.getUserMedia({ audio: { latency: 0.05, echoCancellation: false, noiseSuppression: true, autoGainControl: true} });
+            preSetMedia.then(function(stream) {
+                mic_stream(stream);
+            });
 
-       }else {
+        }else {
 
             navigator.getUserMedia({
                 audio:true
             }, mic_stream, mic_null);
-       }
+        }
 
         function mic_stream(stream) {
             this.stream = stream;
@@ -1064,34 +967,34 @@
             var foundGoodCorrelation = false;
             var correlations = new Array(MAX_SAMPLES);
             for (var i=0;i<SIZE;i++) {
-              var val = buf[i];
-              rms += val*val;
-          }
+                var val = buf[i];
+                rms += val*val;
+            }
             rms = Math.sqrt(rms/SIZE);
 
             if (rms<0.01)
                 return -1;
             var lastCorrelation=1;
             for (var offset = MIN_SAMPLES; offset < MAX_SAMPLES; offset++) {
-              var correlation = 0;
-              for (var _i=0; _i<MAX_SAMPLES; _i++) {
-                  correlation += Math.abs((buf[_i])-(buf[_i+offset]));
-              }
-              correlation = 1 - (correlation/MAX_SAMPLES);
-              correlations[offset] = correlation;
-              if ((correlation>0.9) && (correlation > lastCorrelation)) {
-                  foundGoodCorrelation = true;
-                  if (correlation > best_correlation) {
-                      best_correlation = correlation;
-                      best_offset = offset;
-                  }
-              } else if (foundGoodCorrelation) {
+                var correlation = 0;
+                for (var _i=0; _i<MAX_SAMPLES; _i++) {
+                    correlation += Math.abs((buf[_i])-(buf[_i+offset]));
+                }
+                correlation = 1 - (correlation/MAX_SAMPLES);
+                correlations[offset] = correlation;
+                if ((correlation>0.9) && (correlation > lastCorrelation)) {
+                    foundGoodCorrelation = true;
+                    if (correlation > best_correlation) {
+                        best_correlation = correlation;
+                        best_offset = offset;
+                    }
+                } else if (foundGoodCorrelation) {
 
-                  var shift = (correlations[best_offset+1] - correlations[best_offset-1])/correlations[best_offset];
-                  return sampleRate/(best_offset+(8*shift));
-              }
-              lastCorrelation = correlation;
-          }
+                    var shift = (correlations[best_offset+1] - correlations[best_offset-1])/correlations[best_offset];
+                    return sampleRate/(best_offset+(8*shift));
+                }
+                lastCorrelation = correlation;
+            }
             if (best_correlation > 0.01) {
                 return sampleRate/best_offset;
             }
@@ -1136,7 +1039,7 @@
             this.context.createJavaScriptNode).call(this.context,
             bufferLen, 2, 2);
         var worker = new Worker('record.js');
-        //var worker = new Worker('https://drwebsax.github.io/DrSax.js/js/record.js');
+        //var worker = new Worker('https://dron9h.github.io/drsaxCore/js/record.js');
 
         worker.postMessage({
             command: 'init',
@@ -1436,7 +1339,7 @@
     // Aux
     DSX.prototype.Aux = function(properties) {
         if (!properties) {
-            properties = this.getDefaults();
+            properties = this.getDefaultData();
         }
         this.input = drsaxContext.createGain();
         this.activateNode = drsaxContext.createGain();
@@ -1450,7 +1353,7 @@
         this.gain = properties.gain || this.defaults.gain.value;
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.Aux.prototype = Object.create(Super, {
+    DSX.prototype.Aux.prototype = Object.create(ConstructorInit, {
         name: {
             value: "Aux"
         },
@@ -1484,7 +1387,7 @@
     // Analyser
     DSX.prototype.Analyser = function(properties) {
         if (!properties) {
-            properties = this.getDefaults();
+            properties = this.getDefaultData();
         }
         this.input = drsaxContext.createGain();
         this.activateNode = drsaxContext.createGain();
@@ -1499,7 +1402,7 @@
         this.bypass = properties.bypass || false;
 
     };
-    DSX.prototype.Analyser.prototype = Object.create(Super, {
+    DSX.prototype.Analyser.prototype = Object.create(ConstructorInit, {
         name: {
             value: "Analyser"
         },
@@ -1591,7 +1494,7 @@
     // DelayPipe
     DSX.prototype.DelayPipe = function(properties) {
         if (!properties) {
-            properties = this.getDefaults();
+            properties = this.getDefaultData();
         }
         this.input = drsaxContext.createGain();
         this.activateNode = drsaxContext.createGain();
@@ -1605,7 +1508,7 @@
         this.delayTime = properties.delayTime|| this.defaults.delayTime.value;
         this.bypass = properties.bypass || false;
     };
-    DSX.prototype.DelayPipe.prototype = Object.create(Super, {
+    DSX.prototype.DelayPipe.prototype = Object.create(ConstructorInit, {
         name: {
             value: "DelayPipe"
         },
@@ -1632,8 +1535,6 @@
         }
     });
 
-    DAC = drsax.destination;
-    var is_resume=false;
     if(!is_resume){
         window.addEventListener("click", function (){
             drsax.resume();
@@ -1645,5 +1546,7 @@
         });
      
     }
+
+    DAC = drsax.destination;
 
 })(window);
